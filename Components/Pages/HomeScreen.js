@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native'
+
+export default class HomeScreen extends Component {
+    static navigationOptions = {
+        title: "Home",
+    }
+
+    render() {
+        return (
+            <View style={homeScreen.container}>
+                <Text>Hey there</Text>
+            </View>
+        )
+    }
+}
+
+const homeScreen = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
