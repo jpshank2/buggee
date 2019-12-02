@@ -1,8 +1,8 @@
 import React from 'react';
-import AppNavigator from './Components/AppNavigator';
+import TabNavigator from './Components/TabNavigator';
 
 export default function App() {
   return (
-    <AppNavigator />
+    <TabNavigator />
   );
 }
