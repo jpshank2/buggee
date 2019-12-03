@@ -26,7 +26,13 @@ export default class SearchScreen extends Component {
                     style={searchScreen.input}
                     value={this.state.text}
                     placeholder="Type here to search!"
-                    onChangeText={text => this.setState({text})} />
+                    onChangeText={text => this.setState({text})}
+                    returnKeyType="go" 
+                    onSubmitEditing={() => {
+                        this.props.navigation.navigate("Results" , {
+                            q: this.state.text
+                        })
+                    }}/>
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.navigate("Results" , {

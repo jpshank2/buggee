@@ -14,6 +14,7 @@ export default class SearchResultScreen extends Component {
         this.state = {
             recipes: [],
             id: "",
+            loading: true,
         }
     }
 
@@ -21,33 +22,21 @@ export default class SearchResultScreen extends Component {
         title: `Results`,
     }
 
-    pickRecipe = (uri) => {
-        let promise = new Promise((resolve, reject) => {
-            let uriArray = uri.split("");
-            let idArray = [];
-            for (let i = 0; i < uriArray.length; i++) {
-                if (uriArray[i] == "_") {
-                    for (let k = i + 1; k < uriArray.length; k++) {
-                        idArray.push(uriArray[k]);
-                    }
-                }
-            }
-            resolve(idArray.join(""));
-
-            if (error) {
-                reject(error);
-            }
-        })
-        //let result = await promise;
-        //console.log(result)
-        return promise
-    }
-
     componentDidMount() {
         fetch(`https://api.edamam.com/search?q=${JSON.stringify(this.props.navigation.getParam("q", "null"))}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`)
             .then(res => res.json())
             .then(data => {
                 let recipes = data.hits.map(recipe => {
+                    let uriArray = recipe.recipe.uri.split("");
+                    let idArray = [];
+                    for (let i = 0; i < uriArray.length; i++) {
+                        if (uriArray[i] == "_") {
+                            for (let k = i + 1; k < uriArray.length; k++) {
+                                idArray.push(uriArray[k]);
+                            }
+                        }
+                    }
+                    let id = idArray.join("");
                     return (
                         <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
                             <Image
@@ -59,23 +48,16 @@ export default class SearchResultScreen extends Component {
                             <Text>{recipe.recipe.shareAs}</Text>
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.pickRecipe(recipe.recipe.uri)
-                                        .then(res => {return res})
-                                        .then(promise => this.setState({id: promise}))
-                                        .then(console.log(this.state.id))
-                                        .then(this.props.navigation.navigate("Recipe", {
-                                            r: this.state.id
-                                        }))
-                                        .catch(
-                                            error => alert(error)
-                                        )
+                                    this.props.navigation.navigate("Recipe", {
+                                        r: id
+                                    })
                                 }}>
                                 <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
                             </TouchableOpacity>
                         </View>
                     )
                 })
-                this.setState({ recipes: recipes })
+                this.setState({ recipes: recipes, loading: false })
             })
     }
 
@@ -84,7 +66,7 @@ export default class SearchResultScreen extends Component {
             <View style={searchResultScreen.container}>
                 <Text>Recipes Containing: {JSON.stringify(this.props.navigation.getParam("q", "null"))}</Text>
                 <ScrollView>
-                    {this.state.recipes}
+                    {this.state.loading ? <Text style={searchResultScreen.loading}>Loading...</Text> : this.state.recipes}
                 </ScrollView>
             </View>
         )
@@ -102,5 +84,8 @@ const searchResultScreen = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: "black",
         margin: 10,
+    },
+    loading: {
+        fontSize: 50
     }
 });
