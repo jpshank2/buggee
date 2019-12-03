@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import FilterMenu from '../Fragments/FilterMenu';
 
 export default class SearchScreen extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            text: ""
+            text: "",
+            diet: ""
         }
     }
 
@@ -15,28 +17,37 @@ export default class SearchScreen extends Component {
     }
 
     handleText = (e) => {
-        this.setState({text: e.target.value})
+        this.setState({ text: e.target.value })
     }
-    
+
+    selectDiet = (e) => {
+        this.setState({ diet: e })
+    }
+
     render() {
         return (
             <View style={searchScreen.container}>
                 <Text>Search for Recipes!</Text>
-                <TextInput 
+                <TextInput
                     style={searchScreen.input}
                     value={this.state.text}
                     placeholder="Type here to search!"
-                    onChangeText={text => this.setState({text})}
-                    returnKeyType="go" 
+                    onChangeText={text => this.setState({ text })}
+                    returnKeyType="go"
                     onSubmitEditing={() => {
-                        this.props.navigation.navigate("Results" , {
-                            q: this.state.text
+                        this.props.navigation.navigate("Results", {
+                            q: this.state.text,
+                            diet: this.state.diet,
                         })
-                    }}/>
+                    }} />
+
+                <FilterMenu selectDiet={this.selectDiet} />
+
                 <TouchableOpacity
                     onPress={() => {
-                        this.props.navigation.navigate("Results" , {
-                            q: this.state.text
+                        this.props.navigation.navigate("Results", {
+                            q: this.state.text,
+                            diet: this.state.diet
                         })
                     }}>
                     <Text>Search</Text>
