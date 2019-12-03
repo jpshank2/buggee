@@ -14,7 +14,6 @@ export default class SearchResultScreen extends Component {
         this.state = {
             recipes: [],
             id: "",
-            visible: 0
         }
     }
 
@@ -23,17 +22,25 @@ export default class SearchResultScreen extends Component {
     }
 
     pickRecipe = (uri) => {
-        console.log(uri);
-        let uriArray = uri.split("");
-        let idArray = []
-        for (let i = 0; i < uriArray.length; i++) {
-            if (uriArray[i] == "_") {
-                for (let k = i+1; k < uriArray.length; k++) {
-                    idArray.push(uriArray[k]);
+        let promise = new Promise((resolve, reject) => {
+            let uriArray = uri.split("");
+            let idArray = [];
+            for (let i = 0; i < uriArray.length; i++) {
+                if (uriArray[i] == "_") {
+                    for (let k = i + 1; k < uriArray.length; k++) {
+                        idArray.push(uriArray[k]);
+                    }
                 }
             }
-        }
-        this.setState({id: idArray.join(""), visible: 100});
+            resolve(idArray.join(""));
+
+            if (error) {
+                reject(error);
+            }
+        })
+        //let result = await promise;
+        //console.log(result)
+        return promise
     }
 
     componentDidMount() {
@@ -44,25 +51,31 @@ export default class SearchResultScreen extends Component {
                     return (
                         <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
                             <Image
-                                style={{width: 150, height: 150}}
-                                source={{uri: recipe.recipe.image}}
+                                style={{ width: 150, height: 150 }}
+                                source={{ uri: recipe.recipe.image }}
                             />
-                            <TouchableOpacity
-                                onPress={() => this.pickRecipe(recipe.recipe.uri)}>
-                                <Text style={{textAlign: "center", fontSize: 30, fontWeight: "500"}}>{recipe.recipe.label}</Text>
-                            </TouchableOpacity>
+                            <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
                             <Text>{recipe.recipe.source}</Text>
                             <Text>{recipe.recipe.shareAs}</Text>
                             <TouchableOpacity
-                                onPress={() => {this.props.navigation.navigate("Recipe", {
-                                    r: this.state.id
-                                })}}>
-                                <Text style={{opacity: this.state.visible, textAlign: 'center', fontSize: 25, fontWeight: "300"}}>Details</Text>
+                                onPress={() => {
+                                    this.pickRecipe(recipe.recipe.uri)
+                                        .then(res => {return res})
+                                        .then(promise => this.setState({id: promise}))
+                                        .then(console.log(this.state.id))
+                                        .then(this.props.navigation.navigate("Recipe", {
+                                            r: this.state.id
+                                        }))
+                                        .catch(
+                                            error => alert(error)
+                                        )
+                                }}>
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
                             </TouchableOpacity>
                         </View>
                     )
                 })
-                this.setState({recipes: recipes})
+                this.setState({ recipes: recipes })
             })
     }
 
