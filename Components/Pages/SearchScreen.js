@@ -13,6 +13,10 @@ export default class SearchScreen extends Component {
     static navigationOptions = {
         title: "Search",
     }
+
+    handleText = (e) => {
+        this.setState({text: e.target.value})
+    }
     
     render() {
         return (

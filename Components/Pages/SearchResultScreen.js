@@ -1,21 +1,39 @@
 //
 // Result should include name, image, and time if available
+// fix details on bottom
 //
 
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class SearchResultScreen extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            recipes: []
+            recipes: [],
+            id: "",
+            visible: 0
         }
     }
 
     static navigationOptions = {
-        title: "Results",
+        title: `Results`,
+    }
+
+    pickRecipe = (uri) => {
+        console.log(uri);
+        let uriArray = uri.split("");
+        let idArray = []
+        for (let i = 0; i < uriArray.length; i++) {
+            if (uriArray[i] == "_") {
+                for (let k = i+1; k < uriArray.length; k++) {
+                    idArray.push(uriArray[k]);
+                }
+            }
+        }
+        this.setState({id: idArray.join(""), visible: 100});
     }
 
     componentDidMount() {
@@ -29,9 +47,18 @@ export default class SearchResultScreen extends Component {
                                 style={{width: 150, height: 150}}
                                 source={{uri: recipe.recipe.image}}
                             />
-                            <Text style={{textAlign: "center", fontSize: 30, fontWeight: "500"}}>{recipe.recipe.label}</Text>
+                            <TouchableOpacity
+                                onPress={() => this.pickRecipe(recipe.recipe.uri)}>
+                                <Text style={{textAlign: "center", fontSize: 30, fontWeight: "500"}}>{recipe.recipe.label}</Text>
+                            </TouchableOpacity>
                             <Text>{recipe.recipe.source}</Text>
                             <Text>{recipe.recipe.shareAs}</Text>
+                            <TouchableOpacity
+                                onPress={() => {this.props.navigation.navigate("Recipe", {
+                                    r: this.state.id
+                                })}}>
+                                <Text style={{opacity: this.state.visible, textAlign: 'center', fontSize: 25, fontWeight: "300"}}>Details</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 })
