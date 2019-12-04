@@ -23,10 +23,22 @@ export default class SearchResultScreen extends Component {
     }
 
     componentDidMount() {
+        // let q = JSON.stringify(this.props.navigation.getParam("q", "null"));
+        // let fixedQ = q.substring(1, q.length - 1);
+        // fetch(`https://api.edamam.com/search?q=${fixedQ}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`)
+        //     .then(res => console.log(res))
+        //     //.then(test => console.log(test))
         if (JSON.stringify(this.props.navigation.getParam("diet", "null")) == "") {
             let q = JSON.stringify(this.props.navigation.getParam("q", "null"));
             let fixedQ = q.substring(1, q.length - 1);
-            fetch(`https://api.edamam.com/search?q=${fixedQ}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`)
+            fetch(`https://api.edamam.com/search?q=chicken&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`,
+                {
+                    method: "get",
+                    headers: {
+                        'Accept': '*/*',
+                        'Content-Type': 'application/json'
+                    }
+                })
                 .then(res => res.json())
                 .then(data => {
                     let recipes = data.hits.map(recipe => {
@@ -62,6 +74,7 @@ export default class SearchResultScreen extends Component {
                     })
                     this.setState({ recipes: recipes, loading: false })
                 })
+                .catch(err => console.log(err))
         } else {
             let q = JSON.stringify(this.props.navigation.getParam("q", "null"));
             let fixedQ = q.substring(1, q.length - 1);
@@ -103,6 +116,7 @@ export default class SearchResultScreen extends Component {
                     })
                     this.setState({ recipes: recipes, loading: false })
                 })
+                .catch(err => console.log(err))
         }
     }
 

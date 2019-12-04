@@ -41,7 +41,7 @@ export default class SearchScreen extends Component {
                         })
                     }} />
 
-                <FilterMenu selectDiet={this.selectDiet} />
+                <FilterMenu selectDiet={this.selectDiet} diet={this.state.diet} />
 
                 <TouchableOpacity
                     onPress={() => {
