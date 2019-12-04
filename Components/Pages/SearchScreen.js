@@ -8,7 +8,8 @@ export default class SearchScreen extends Component {
 
         this.state = {
             text: "",
-            diet: ""
+            diet: "no",
+            health: [],
         }
     }
 
@@ -22,6 +23,14 @@ export default class SearchScreen extends Component {
 
     selectDiet = (e) => {
         this.setState({ diet: e })
+    }
+
+    addHealth = e => {
+        if (this.state.health.length === 0) {
+            this.setState({ health: [e] })
+        } else {
+            this.setState({ health: [...this.state.health, e] })
+        }
     }
 
     render() {
@@ -38,19 +47,27 @@ export default class SearchScreen extends Component {
                         this.props.navigation.navigate("Results", {
                             q: this.state.text,
                             diet: this.state.diet,
+                            health: this.state.health
                         })
                     }} />
 
-                <FilterMenu selectDiet={this.selectDiet} diet={this.state.diet} />
+                <FilterMenu selectDiet={this.selectDiet} diet={this.state.diet} addHealth={this.addHealth} health={this.state.health} />
 
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.navigate("Results", {
                             q: this.state.text,
-                            diet: this.state.diet
+                            diet: this.state.diet,
+                            health: this.state.health
                         })
                     }}>
                     <Text>Search</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        this.setState({ text: "", diet: "no", health: [] })
+                    }}>
+                    <Text>Clear Filters</Text>
                 </TouchableOpacity>
             </View>
         )

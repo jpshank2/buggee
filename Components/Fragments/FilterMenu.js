@@ -1,90 +1,73 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, TextInput, TouchableOpacity, Picker, StyleSheet } from 'react-native';
-//import { CheckBox } from 'react-native-elements';
-//import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
+import { ScrollView, View, Text, TextInput, TouchableOpacity, Picker, StyleSheet } from 'react-native';
+import { CheckBox } from 'react-native-elements';
 
 export default class FilterMenu extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            diet: ""
+            diet: false,
+            health: false,
+            checked: false,
         }
     }
 
     render() {
         return (
             <ScrollView>
-                <Text>Filters:</Text>
+                <TouchableOpacity
+                    onPress={() => this.setState({diet: !this.state.diet, health: false})}>
+                    <Text>Click for Dietary Filters</Text>
+                </TouchableOpacity>
                 <Picker
                     selectedValue={this.props.diet}
-                    style={{ height: 50, width: 200 }}
-                    onValueChange={(itemValue, itemIndex) =>
+                    style={{ height: 50, width: 200, display: this.state.diet ? "flex" : "none" }}
+                    onValueChange={(itemValue, itemPosition) =>
                         this.props.selectDiet(itemValue)
                     }>
+                    <Picker.Item label="Select" />
                     <Picker.Item label="Balanced" value="balanced" />
                     <Picker.Item label="High Protein" value="high-protein" />
                     <Picker.Item label="Low Carb" value="low-carb" />
                     <Picker.Item label="Low Fat" value="low-fat" />
                 </Picker>
+                <TouchableOpacity
+                    onPress={() => this.setState({health: !this.state.health, diet: false})}>
+                    <Text>Click for Health Filters</Text>
+                </TouchableOpacity>
+                <Picker
+                    selectedValue={this.props.health[(this.props.health.length-1)]}
+                    style={{ height: 50, width: 200, display: this.state.health ? "flex" : "none" }}
+                    onValueChange={(itemValue, itemPosition) => {
+                        this.props.addHealth(itemValue)
+                        }
+                    }>
+                    <Picker.Item label="Select" />
+                    <Picker.Item label="Vegan" value="vegan" />
+                    <Picker.Item label="Vegetarian" value="vegetarian" />
+                    <Picker.Item label="Sugar Conscious" value="sugar-conscious" />
+                    <Picker.Item label="Peanut Free" value="peanut-free" />
+                    <Picker.Item label="Tree Nut Free" value="tree-nut-free" />
+                    <Picker.Item label="Alcohol Free" value="alcohol-free" />
+                </Picker>
+                {/* <View style={{ height: 50, width: 200, display: this.state.health ? "flex" : "none" }}>
+                    <CheckBox 
+                        title="Vegan"
+                        checked={this.state.checked}
+                        onPress={() => {
+                            this.setState({checked: !this.state.checked})
+                            this.props.addHealth("vegan")
+                        }} />
+                     <CheckBox 
+                        title="Vegetarian"
+                        checked={this.state.checked}
+                        onPress={() => {
+                            this.setState({checked: !this.state.checked})
+                            this.props.addHealth("vegetarian")
+                        }} />
+                </View> */}
             </ScrollView>
-            // <MenuProvider toggleMenu={"filters"} style={{ flexDirection: "column", padding: 30 }}>
-            //     <ScrollView>
-            //         <Menu name={"filters"}>
-
-            //             <MenuTrigger>
-            //                 <Text>Filters</Text>
-            //             </MenuTrigger>
-
-
-            //             <MenuOptions>
-            //                 <ScrollView>
-            //                 <MenuOption>
-            //                     <Text>Dietary Filters</Text>
-            //                     <MenuOptions>
-            //                         <MenuOption onSelect={() => this.props.selectDiet("balanced")}>
-            //                             <Text>Balanced</Text>
-            //                         </MenuOption>
-            //                         <MenuOption onSelect={() => this.props.selectDiet("high-protein")}>
-            //                             <Text>High Protein</Text>
-            //                         </MenuOption>
-            //                         <MenuOption onSelect={() => this.props.selectDiet("low-carb")}>
-            //                             <Text>Low Carb</Text>
-            //                         </MenuOption>
-            //                         <MenuOption onSelect={() => this.props.selectDiet("low-fat")}>
-            //                             <Text>Low Fat</Text>
-            //                         </MenuOption>
-            //                     </MenuOptions>
-            //                 </MenuOption>
-            //                 <MenuOption>
-            //                     <Text>Health Filters</Text>
-            //                     <MenuOptions >
-            //                         <MenuOption>
-            //                             <CheckBox title="Vegan" />
-            //                         </MenuOption>
-            //                         <MenuOption>
-            //                             <CheckBox title="Vegetarian" />
-            //                         </MenuOption>
-            //                         <MenuOption>
-            //                             <CheckBox title="Sugar Conscious" />
-            //                         </MenuOption>
-            //                         <MenuOption>
-            //                             <CheckBox title="Peanut Free" />
-            //                         </MenuOption>
-            //                         <MenuOption>
-            //                             <CheckBox title="Tree Nut Free" />
-            //                         </MenuOption>
-            //                         <MenuOption>
-            //                             <CheckBox title="Alcohol Free" />
-            //                         </MenuOption>
-            //                     </MenuOptions>
-            //                 </MenuOption>
-            //                 </ScrollView>
-            //             </MenuOptions>
-
-            //         </Menu>
-            //     </ScrollView>
-            // </MenuProvider>
         )
     }
 }
