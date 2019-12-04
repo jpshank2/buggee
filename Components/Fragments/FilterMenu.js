@@ -18,7 +18,7 @@ export default class FilterMenu extends Component {
             <ScrollView>
                 <TouchableOpacity
                     onPress={() => this.setState({diet: !this.state.diet, health: false})}>
-                    <Text>Click for Dietary Filters</Text>
+                    <Text style={{margin: 10}}>Click for Dietary Filters</Text>
                 </TouchableOpacity>
                 <Picker
                     selectedValue={this.props.diet}
@@ -34,7 +34,7 @@ export default class FilterMenu extends Component {
                 </Picker>
                 <TouchableOpacity
                     onPress={() => this.setState({health: !this.state.health, diet: false})}>
-                    <Text>Click for Health Filters</Text>
+                    <Text style={{margin: 10}}>Click for Health Filters</Text>
                 </TouchableOpacity>
                 <Picker
                     selectedValue={this.props.health[(this.props.health.length-1)]}

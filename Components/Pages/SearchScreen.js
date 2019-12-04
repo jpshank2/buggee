@@ -50,6 +50,8 @@ export default class SearchScreen extends Component {
                             health: this.state.health
                         })
                     }} />
+                <Text style={{display: (this.state.diet == "no") ? "none" : "flex"}}>Current Dietary Filter: {this.state.diet}</Text>
+                <Text style={{display: (this.state.health.length == 0) ? "none" : "flex"}}>Current Health Filter(s): {this.state.health.join(", ")}</Text>
 
                 <FilterMenu selectDiet={this.selectDiet} diet={this.state.diet} addHealth={this.addHealth} health={this.state.health} />
 
@@ -61,13 +63,13 @@ export default class SearchScreen extends Component {
                             health: this.state.health
                         })
                     }}>
-                    <Text>Search</Text>
+                    <Text style={{margin: 20}}>Search</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
                         this.setState({ text: "", diet: "no", health: [] })
                     }}>
-                    <Text>Clear Filters</Text>
+                    <Text style={{margin: 20}}>Clear Filters</Text>
                 </TouchableOpacity>
             </View>
         )
