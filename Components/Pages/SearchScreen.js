@@ -1,74 +1,109 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import FilterMenu from '../Fragments/FilterMenu';
+import React, { Component } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+  Picker
+} from "react-native";
+import FilterMenu from "../Fragments/FilterMenu";
+import DrawerNavigator from "../DrawerNavigator"
+import Ionicons from "@expo/vector-icons/Ionicons.js";
+import ListScreen from "./ListScreen";
+
+import { Container, Content, Header, Body, Icon, Right } from "native-base";
+import {
+  StackNavigator,
+  DrawerItems,
+  SafeAreaView
+} from "react-navigation";
+import { createDrawerNavigator } from "react-navigation-drawer";
 
 export default class SearchScreen extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            text: "",
-            diet: ""
-        }
-    }
+    this.state = {
+      text: "",
+      diet: ""
+    };
+  }
 
-    static navigationOptions = {
-        title: "Search",
-    }
+  static navigationOptions = {
+    title: "Search",
+    drawerIcon: <Ionicons name={`ios-settings`} size={30} />
+  };
 
-    handleText = (e) => {
-        this.setState({ text: e.target.value })
-    }
+  handleText = e => {
+    this.setState({ text: e.target.value });
+  };
 
-    selectDiet = (e) => {
-        this.setState({ diet: e })
-    }
+  selectDiet = e => {
+    this.setState({ diet: e });
+  };
 
-    render() {
-        return (
-            <View style={searchScreen.container}>
-                <Text>Search for Recipes!</Text>
-                <TextInput
-                    style={searchScreen.input}
-                    value={this.state.text}
-                    placeholder="Type here to search!"
-                    onChangeText={text => this.setState({ text })}
-                    returnKeyType="go"
-                    onSubmitEditing={() => {
-                        this.props.navigation.navigate("Results", {
-                            q: this.state.text,
-                            diet: this.state.diet,
-                        })
-                    }} />
+  render() {
+    return (
+      <View style={searchScreen.container}>
+        <Container>
+          <Header>
+            <Right>
+              <Icon
+                name="ios-settings"
+                onPress={() => this.props.navigation.navigate("DrawerOpen")}
+              />
+            </Right>
+          </Header>
+        </Container>
 
-                <FilterMenu selectDiet={this.selectDiet} />
+        <Text>Search for Recipes!</Text>
+        <TextInput
+          style={searchScreen.input}
+          value={this.state.text}
+          placeholder="Type here to search!"
+          onChangeText={text => this.setState({ text })}
+          returnKeyType="go"
+          onSubmitEditing={() => {
+            this.props.navigation.navigate("Results", {
+              q: this.state.text,
+              diet: this.state.diet
+            });
+          }}
+        />
 
-                <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigation.navigate("Results", {
-                            q: this.state.text,
-                            diet: this.state.diet
-                        })
-                    }}>
-                    <Text>Search</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
+        <FilterMenu selectDiet={this.selectDiet} />
+
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("Results", {
+              q: this.state.text,
+              diet: this.state.diet
+            });
+          }}
+        >
+          <Text>Search</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
 const searchScreen = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    input: {
-        height: 40,
-        width: 200,
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 20
-    }
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  input: {
+    height: 40,
+    width: 200,
+    borderColor: "gray",
+    borderWidth: 1,
+    margin: 20
+  }
 });
