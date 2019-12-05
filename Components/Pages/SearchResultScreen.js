@@ -1,12 +1,7 @@
-//
-// Result should include name, image, and time if available
-// fix details on bottom
-// now console logging that it doesn't know object
-//
-
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Heart from '../Fragments/Heart';
 
 export default class SearchResultScreen extends Component {
     constructor(props) {
@@ -16,6 +11,7 @@ export default class SearchResultScreen extends Component {
             recipes: [],
             id: "",
             loading: true,
+            color: false,
         }
     }
 
@@ -32,37 +28,7 @@ export default class SearchResultScreen extends Component {
                     return res.json()
                 })
                 .then(data => {
-                    let recipes = data.hits.map(recipe => {
-                        let uriArray = recipe.recipe.uri.split("");
-                        let idArray = [];
-                        for (let i = 0; i < uriArray.length; i++) {
-                            if (uriArray[i] == "_") {
-                                for (let k = i + 1; k < uriArray.length; k++) {
-                                    idArray.push(uriArray[k]);
-                                }
-                            }
-                        }
-                        let id = idArray.join("");
-                        return (
-                            <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
-                                <Image
-                                    style={{ width: 150, height: 150 }}
-                                    source={{ uri: recipe.recipe.image }}
-                                />
-                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
-                                <Text>{recipe.recipe.source}</Text>
-                                <Text>{recipe.recipe.shareAs}</Text>
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.props.navigation.navigate("Recipe", {
-                                            r: id
-                                        })
-                                    }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
+                    let recipes = data.hits;
                     this.setState({ recipes: recipes, loading: false })
                 })
                 .catch(() => console.log("not empty"))
@@ -76,37 +42,7 @@ export default class SearchResultScreen extends Component {
                     return res.json()
                 })
                 .then(data => {
-                    let recipes = data.hits.map(recipe => {
-                        let uriArray = recipe.recipe.uri.split("");
-                        let idArray = [];
-                        for (let i = 0; i < uriArray.length; i++) {
-                            if (uriArray[i] == "_") {
-                                for (let k = i + 1; k < uriArray.length; k++) {
-                                    idArray.push(uriArray[k]);
-                                }
-                            }
-                        }
-                        let id = idArray.join("");
-                        return (
-                            <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
-                                <Image
-                                    style={{ width: 150, height: 150 }}
-                                    source={{ uri: recipe.recipe.image }}
-                                />
-                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
-                                <Text>{recipe.recipe.source}</Text>
-                                <Text>{recipe.recipe.shareAs}</Text>
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.props.navigation.navigate("Recipe", {
-                                            r: id
-                                        })
-                                    }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
+                    let recipes = data.hits;
                     this.setState({ recipes: recipes, loading: false })
                 })
                 .catch(() => console.log("nope"))
@@ -122,37 +58,7 @@ export default class SearchResultScreen extends Component {
                     return res.json()
                 })
                 .then(data => {
-                    let recipes = data.hits.map(recipe => {
-                        let uriArray = recipe.recipe.uri.split("");
-                        let idArray = [];
-                        for (let i = 0; i < uriArray.length; i++) {
-                            if (uriArray[i] == "_") {
-                                for (let k = i + 1; k < uriArray.length; k++) {
-                                    idArray.push(uriArray[k]);
-                                }
-                            }
-                        }
-                        let id = idArray.join("");
-                        return (
-                            <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
-                                <Image
-                                    style={{ width: 150, height: 150 }}
-                                    source={{ uri: recipe.recipe.image }}
-                                />
-                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
-                                <Text>{recipe.recipe.source}</Text>
-                                <Text>{recipe.recipe.shareAs}</Text>
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.props.navigation.navigate("Recipe", {
-                                            r: id
-                                        })
-                                    }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
+                    let recipes = data.hits;
                     this.setState({ recipes: recipes, loading: false })
                 })
                 .catch(() => console.log("nope"))
@@ -166,37 +72,7 @@ export default class SearchResultScreen extends Component {
                     return res.json()
                 })
                 .then(data => {
-                    let recipes = data.hits.map(recipe => {
-                        let uriArray = recipe.recipe.uri.split("");
-                        let idArray = [];
-                        for (let i = 0; i < uriArray.length; i++) {
-                            if (uriArray[i] == "_") {
-                                for (let k = i + 1; k < uriArray.length; k++) {
-                                    idArray.push(uriArray[k]);
-                                }
-                            }
-                        }
-                        let id = idArray.join("");
-                        return (
-                            <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
-                                <Image
-                                    style={{ width: 150, height: 150 }}
-                                    source={{ uri: recipe.recipe.image }}
-                                />
-                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
-                                <Text>{recipe.recipe.source}</Text>
-                                <Text>{recipe.recipe.shareAs}</Text>
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.props.navigation.navigate("Recipe", {
-                                            r: id
-                                        })
-                                    }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
+                    let recipes = data.hits;
                     this.setState({ recipes: recipes, loading: false })
                 })
                 .catch(() => console.log("nope"))
@@ -210,7 +86,36 @@ export default class SearchResultScreen extends Component {
             <View style={searchResultScreen.container}>
                 <Text>Recipes Containing: {JSON.stringify(this.props.navigation.getParam("q", "null"))}</Text>
                 <ScrollView>
-                    {this.state.loading ? <Text style={searchResultScreen.loading}>Loading...</Text> : this.state.recipes}
+                    {this.state.loading ? <Text style={searchResultScreen.loading}>Loading...</Text> : this.state.recipes.map(recipe => {
+                        let uriArray = recipe.recipe.uri.split("");
+                        let idArray = [];
+                        for (let i = 0; i < uriArray.length; i++) {
+                            if (uriArray[i] == "_") {
+                                for (let k = i + 1; k < uriArray.length; k++) {
+                                    idArray.push(uriArray[k]);
+                                }
+                            }
+                        }
+                        let id = idArray.join("");
+                        return (
+                            <View style={searchResultScreen.recipe} key={recipe.recipe.uri}>
+                                <Image
+                                    style={searchResultScreen.image}
+                                    source={{ uri: recipe.recipe.image }}
+                                />
+                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
+                                <Heart />
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.props.navigation.navigate("Recipe", {
+                                            r: id
+                                        })
+                                    }}>
+                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    })}
                 </ScrollView>
             </View>
         )
@@ -224,11 +129,20 @@ const searchResultScreen = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
+    image: {
+        width: 150, 
+        height: 150,
+        alignSelf: "center",
+        margin: 5
+    },
+
     recipe: {
         borderWidth: 0.5,
         borderColor: "black",
         margin: 10,
     },
+
     loading: {
         fontSize: 50
     }

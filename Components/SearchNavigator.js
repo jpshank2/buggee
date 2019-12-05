@@ -8,7 +8,7 @@ const SearchNavigator = createStackNavigator(
     {
         Results: SearchResultScreen,
         Recipe: RecipeResultScreen,
-        Main: SearchScreen
+        Main: SearchScreen,
     },
     {
         initialRouteName: "Main"
