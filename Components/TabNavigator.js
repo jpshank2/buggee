@@ -3,10 +3,10 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons.js';
 import HomeScreen from './Pages/HomeScreen';
-import SearchScreen from './Pages/SearchScreen';
 import BookmarkedScreen from './Pages/BookmarkedScreen';
 import ListNavigator from './ListNavigator';
 import { createStackNavigator } from 'react-navigation-stack';
+import SearchNavigator from './SearchNavigator';
 
 const TabNavigator = createBottomTabNavigator(
     {
@@ -20,7 +20,7 @@ const TabNavigator = createBottomTabNavigator(
             }
         },
         Search: {
-            screen: createStackNavigator({Search: SearchScreen}),
+            screen: SearchNavigator,
             navigationOptions: {
                 tabBarLabel: "Search",
                 tabBarIcon: ({tintColor}) => (
