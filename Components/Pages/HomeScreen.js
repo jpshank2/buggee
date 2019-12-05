@@ -14,10 +14,22 @@ export default class HomeScreen extends Component {
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
                 <View style={homeScreen.iconContainer}>
-                    <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}></Image>
-                    <Image style={homeScreen.eachIcon} source={require('../images/magnifyingGlass.jpg')}></Image>
-                    <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
-                    <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
+                    <View>
+                        <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}></Image>
+                        <Text style={homeScreen.iconText}>Your Cookbook</Text>
+                    </View>
+                    <View>
+                        <Image style={homeScreen.eachIcon} source={require('../images/magnifyingGlass.jpg')}></Image>
+                        <Text style={homeScreen.iconText}>Search Recipes</Text>
+                    </View>
+                    <View>
+                        <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
+                        <Text style={homeScreen.iconText}>Shopping List and Pantry</Text>
+                    </View>
+                    <View>
+                        <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
+                        <Text style={homeScreen.iconText}>Profile</Text>
+                    </View>
                 </View>
             </View>
         )
@@ -27,6 +39,8 @@ export default class HomeScreen extends Component {
 const homeScreen = StyleSheet.create({
     container: {
         flex: 1,
+        borderBottomColor: 'red',
+        borderBottomWidth: 2,
     },
 
     headerImage: {
@@ -36,7 +50,7 @@ const homeScreen = StyleSheet.create({
         flex: 1,
         borderBottomWidth: 3,
         borderBottomColor: 'red',
-      
+
     },
 
     headerText: {
@@ -47,11 +61,11 @@ const homeScreen = StyleSheet.create({
         justifyContent: 'center',
         marginTop: '14%',
         color: 'white',
-        fontFamily: 'ChalkboardSE-Bold' 
+        fontFamily: 'ChalkboardSE-Bold'
     },
 
     headerSubText: {
-        fontSize:15,
+        fontSize: 15,
         display: 'flex',
         fontWeight: '100',
         textAlign: 'center',
@@ -67,14 +81,20 @@ const homeScreen = StyleSheet.create({
         alignItems: "center",
         flexDirection: 'row',
         alignContent: 'space-around',
-        bottom: 22,
+        bottom: 10,
         // borderBottomColor: 'red',
         // borderBottomWidth: 3,
     },
 
     eachIcon: {
         width: 150,
-        height: 150,  
+        height: 150,
         borderRadius: 30,
+    },
+
+    iconText: {
+        fontFamily: 'ChalkboardSE-Bold', 
+        fontSize: 13,
+        alignSelf: "center",
     }
 });
