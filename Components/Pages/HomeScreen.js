@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { View, Text, Button, StyleSheet, Picker } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons.js";
-import { DNav } from "../DrawerNavigator";
-import { Container, Content, Header, Body, Icon } from "native-base";
-import { StackNavigator, DrawerItems, SafeAreaView } from "react-navigation";
-import { createDrawerNavigator } from "react-navigation-drawer";
+import DNav from "../DrawerNavigator";
+import TabNavigator from "../TabNavigator";
 
-export class HomeScreen extends Component {
+export default class HomeScreen extends Component {
+ static navigationOptions = {
+    title: 'Home',
+    drawerLabel: 'Home'  }
+
   render() {
     return (
-      <View style={homeScreen.container}>
-        <DNav />
-        <Text> Hey there </Text>
-      </View>
+        <View style={homeScreen.container}>
+          <Text> Hey there </Text>
+        </View>
     );
   }
 }

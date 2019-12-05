@@ -7,9 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { Container, Content, Header, Body, Icon} from 'native-base';
-import { DrawerNavigator, StackNavigator, DrawerItems, SafeAreaView } from 'react-navigation'
-import {createDrawerNavigator} from 'react-navigation-drawer';
+import SettingsButton from '../SettingsButton'
 
 export default class ListScreen extends Component {
   static navigationOptions = {
@@ -18,43 +16,32 @@ export default class ListScreen extends Component {
 
   render() {
     return (
-       
-
-      <View style={listScreen.container}> 
-      <Container>
-        <Header>
-          <Right>
-            <Icon
-              name="ios-settings"
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            />
-          </Right>
-        </Header>
-      </Container>
+ <View style={listScreen.container}> 
         <ScrollView style={listScreen.listContainer}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Shopping")}
           >
-            <Text style={listScreen.title}> Shopping </Text>{" "}
-          </TouchableOpacity>{" "}
+            <Text style={listScreen.title}> Shopping </Text>
+          </TouchableOpacity>
           <View>
-            <Text> Chicken </Text> <Text> Potatoes </Text>{" "}
-            <Text> Frozen Peas </Text>{" "}
-          </View>{" "}
-        </ScrollView>{" "}
+            <Text> Chicken </Text><Text> Potatoes </Text>
+            <Text> Frozen Peas </Text>
+          </View>
+        </ScrollView>
         <ScrollView style={listScreen.listContainer}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Groceries")}
           >
-            <Text style={listScreen.title}> Groceries </Text>{" "}
-          </TouchableOpacity>{" "}
+            <Text style={listScreen.title}> Groceries </Text>
+          </TouchableOpacity>
           <View>
-            <Text> Olive Oil </Text> <Text> Garlic </Text>{" "}
-            <Text> White Wine </Text> <Text> Chicken Stock </Text>{" "}
-            <Text> Parsley </Text> <Text> Oregano </Text> <Text> Salt </Text>{" "}
-            <Text> Pepper </Text>{" "}
-          </View>{" "}
-        </ScrollView>{" "}
+            <Text> Olive Oil </Text>
+            <Text> Garlic </Text>
+            <Text> White Wine </Text><Text> Chicken Stock </Text>
+            <Text> Parsley </Text><Text> Oregano </Text><Text> Salt </Text>
+            <Text> Pepper </Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }

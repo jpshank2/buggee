@@ -34,8 +34,7 @@ export default class SearchScreen extends Component {
   }
 
   static navigationOptions = {
-    title: "Search",
-    drawerIcon: <Ionicons name={`ios-settings`} size={30} />
+    title: "Search"
   };
 
   handleText = e => {
@@ -49,16 +48,6 @@ export default class SearchScreen extends Component {
   render() {
     return (
       <View style={searchScreen.container}>
-        <Container>
-          <Header>
-            <Right>
-              <Icon
-                name="ios-settings"
-                onPress={() => this.props.navigation.navigate("DrawerOpen")}
-              />
-            </Right>
-          </Header>
-        </Container>
 
         <Text>Search for Recipes!</Text>
         <TextInput
