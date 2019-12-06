@@ -15,8 +15,8 @@ export default class PantryListScreen extends Component {
                 </ImageBackground>
 
 
-                <View style={pantryScreen.itemsContainer} >
-                    <View style={pantryScreen.containerShadow}>
+                <View >
+                    <View style={pantryScreen.itemsContainer}>
                         <FlatList 
                             data={[
                                 { key: 'Olive Oil' },
@@ -76,27 +76,14 @@ const pantryScreen = StyleSheet.create({
     },
 
     itemsContainer: {
-        
+        flex: 4,
         justifyContent:'center',
         alignSelf: 'center',
-      
-        
-
-    },
-
-   containerShadow:{  
-       borderRadius: 30,
+        borderRadius: 30,
         borderColor: 'red',
         borderWidth:2,
         margin: 4,
-       flex: 4,
-       shadowColor: "#000000",
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        shadowOffset: {
-          height: 1,
-          width: 1
-        }
-   }
+    },
+
 
 });
