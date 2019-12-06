@@ -7,8 +7,6 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import SettingsButton from '../SettingsButton'
-
 export default class ListScreen extends Component {
   static navigationOptions = {
     title: "Lists"
