@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 
 export default class BookmarkedScreen extends Component {
     static navigationOptions = {
-        title: "Bookmarked Recipes",
+        title: "Cookbook",
     }
 
     render() {
