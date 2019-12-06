@@ -14,7 +14,7 @@ export default class ListScreen extends Component {
 
   render() {
     return (
- <View style={listScreen.container}> 
+      <View style={listScreen.container}>
         <ScrollView style={listScreen.listContainer}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Shopping")}
