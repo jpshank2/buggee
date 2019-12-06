@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, TextInput } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import { SearchBar, Icon } from 'react-native-elements';
+
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
@@ -27,34 +28,34 @@ export default class HomeScreen extends Component {
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
 
-                <View style={homeScreen.searchContainer}>
+                {/* <View style={homeScreen.searchContainer}>
                     <View style={homeScreen.searchBar}>
                         <View style={homeScreen.input}>
                             <Icon name='search' stye={{ paddingLeft: 10 }}></Icon>
                             <TextInput placeholder='Search Your Recipes' style={{ fontSize: 15, paddingLeft: 15 }} />
                         </View>
                     </View>
-                </View>
+                </View> */}
 
 
 
                 <View style={homeScreen.iconContainer}>
-                    <View>
-                        <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}></Image>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
+                        <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}/>
                         <Text style={homeScreen.iconText}>Your Cookbook</Text>
-                    </View>
-                    <View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Search')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/magnifyingGlass.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Search Recipes</Text>
-                    </View>
-                    <View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Lists')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
                         <Text style={homeScreen.iconText}>Shopping List and Pantry</Text>
-                    </View>
-                    <View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Profile</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -109,8 +110,8 @@ const homeScreen = StyleSheet.create({
     },
 
     eachIcon: {
-        width: 150,
-        height: 150,
+        width: 160,
+        height: 160,
         borderRadius: 30,
     },
 
