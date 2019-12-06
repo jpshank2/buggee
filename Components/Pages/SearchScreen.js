@@ -1,25 +1,110 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import React, { Component } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+  Picker
+} from "react-native";
+import FilterMenu from "../Fragments/FilterMenu";
+import Ionicons from "@expo/vector-icons/Ionicons.js";
+import ListScreen from "./ListScreen";
+
+import {
+  StackNavigator,
+  DrawerItems,
+  SafeAreaView
+} from "react-navigation";
 
 export default class SearchScreen extends Component {
-    static navigationOptions = {
-        title: "Search",
+  constructor(props) {
+    super(props);
+
+        this.state = {
+            text: "",
+            diet: "no",
+            health: [],
+        }
     }
-    
-    render() {
+  static navigationOptions = {
+    title: "Search"
+  };
+
+  handleText = e => {
+    this.setState({ text: e.target.value });
+  };
+
+  selectDiet = e => {
+    this.setState({ diet: e });
+  };
+
+  addHealth = e => {
+    if (this.state.health.length === 0) {
+        this.setState({ health: [e] })
+    } else {
+        this.setState({ health: [...this.state.health, e] })
+    }
+}
+
+  render() {
         return (
             <View style={searchScreen.container}>
-                <Text>Searchy searchy</Text>
+                <Text>Search for Recipes!</Text>
+                <TextInput
+                    style={searchScreen.input}
+                    value={this.state.text}
+                    placeholder="Type here to search!"
+                    onChangeText={text => this.setState({ text })}
+                    returnKeyType="go"
+                    onSubmitEditing={() => {
+                        this.props.navigation.navigate("Results", {
+                            q: this.state.text,
+                            diet: this.state.diet,
+                            health: this.state.health
+                        })
+                    }} />
+                <Text style={{display: (this.state.diet == "no") ? "none" : "flex"}}>Current Dietary Filter: {this.state.diet}</Text>
+                <Text style={{display: (this.state.health.length == 0) ? "none" : "flex"}}>Current Health Filter(s): {this.state.health.join(", ")}</Text>
+
+                <FilterMenu selectDiet={this.selectDiet} diet={this.state.diet} addHealth={this.addHealth} health={this.state.health} />
+
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.navigation.navigate("Results", {
+                            q: this.state.text,
+                            diet: this.state.diet,
+                            health: this.state.health
+                        })
+                    }}>
+                    <Text style={{margin: 20}}>Search</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        this.setState({ text: "", diet: "no", health: [] })
+                    }}>
+                    <Text style={{margin: 20}}>Clear Filters</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
 
 const searchScreen = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  input: {
+    height: 40,
+    width: 200,
+    borderColor: "gray",
+    borderWidth: 1,
+    margin: 20
+  }
 });
