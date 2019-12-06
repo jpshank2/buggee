@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://reba:tiger@reba-cluster-rqdoo.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
