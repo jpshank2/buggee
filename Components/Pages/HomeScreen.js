@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, TextInput } from 'react-native'
+import { SearchBar, Icon } from 'react-native-elements';
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
         title: "Home",
     }
+    state = {
+        search: '',
+    };
+
+    updateSearch = search => {
+        this.setState({ search });
+    };
 
     render() {
+
         return (
             <View style={homeScreen.container}>
                 <ImageBackground source={require('../images/whitePlate.jpg')} style={homeScreen.headerImage}>
                     <Text style={homeScreen.headerText}>Buggee</Text>
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
+
+                <View style={homeScreen.searchContainer}>
+                    <View style={homeScreen.searchBar}>
+                        <View style={homeScreen.input}>
+                            <TextInput  placeholder='Search Your Recipes' style={{ fontSize:15,paddingLeft:15 }} />
+                            <Icon name='search'></Icon>
+                        </View>
+                    </View>
+                </View>
+
+
+
                 <View style={homeScreen.iconContainer}>
                     <View>
                         <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}></Image>
@@ -47,7 +68,7 @@ const homeScreen = StyleSheet.create({
         width: '100%',
         display: 'flex',
         textAlign: 'center',
-        flex: 1,
+        flex: 1.5,
         borderBottomWidth: 3,
         borderBottomColor: 'red',
 
@@ -75,15 +96,14 @@ const homeScreen = StyleSheet.create({
     },
 
     iconContainer: {
-        flex: 2,
+        flex: 4,
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         alignItems: "center",
         flexDirection: 'row',
         alignContent: 'space-around',
-        bottom: 10,
-        // borderBottomColor: 'red',
-        // borderBottomWidth: 3,
+        paddingBottom: 10,
+        // paddingTop: 7
     },
 
     eachIcon: {
@@ -93,8 +113,38 @@ const homeScreen = StyleSheet.create({
     },
 
     iconText: {
-        fontFamily: 'ChalkboardSE-Bold', 
+        fontFamily: 'ChalkboardSE-Bold',
         fontSize: 13,
         alignSelf: "center",
+    },
+
+
+    searchContainer: {
+        flex: 1,
+        marginTop: 131,
+        position: 'absolute',
+        alignSelf: 'center'
+    },
+
+    searchBar: {
+        height: 40,
+        flex: 1,
+        backgroundColor: 'red',
+        paddingHorizontal: 5,
+        width: 230,
+        borderTopColor: 'red',
+        borderTopWidth: 2.5,
+        borderRadius: 20,
+    },
+
+    input: {
+       
+        borderRadius: 20,
+
+        height: 35,
+     backgroundColor: 'white',
+     flexDirection: 'row',
+     padding: 5,
+     alignItems: 'center',
     }
 });
