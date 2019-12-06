@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons.js";
 import HomeScreen from "./Pages/HomeScreen";
 import BookmarkedScreen from "./Pages/BookmarkedScreen";
-import ListNavigator from "./ListNavigator";
+//import ListNavigator from "./ListNavigator";
 import SearchNavigator from "./SearchNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 
@@ -28,14 +28,14 @@ const TabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Lists: {
-      screen: ListNavigator,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
-          <Ionicons name={`ios-list`} color={tintColor} size={30} />
-        )
-      }
-    },
+    // Lists: {
+    //   screen: ListNavigator,
+    //   navigationOptions: {
+    //     tabBarIcon: ({ tintColor }) => (
+    //       <Ionicons name={`ios-list`} color={tintColor} size={30} />
+    //     )
+    //   }
+    // },
     Cookbook: {
       screen: createStackNavigator({ Cookbook: BookmarkedScreen }),
       navigationOptions: {

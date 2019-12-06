@@ -1,12 +1,16 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "mern-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "author": "Rebekah Llinares",
+  "license": "MIT",
   "dependencies": {
     "expo": "^35.0.0",
     "formik": "^2.0.6",
@@ -24,10 +28,19 @@
     "react-navigation": "^4.0.10",
     "react-navigation-drawer": "^2.3.3",
     "react-navigation-stack": "^1.10.3",
-    "react-navigation-tabs": "^2.6.0"
+    "react-navigation-tabs": "^2.6.0",
+
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.13",
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.1.0"
-  },
-  "private": true
+    "concurrently": "^5.0.0",
+    "nodemon": "^2.0.1"
+  }
 }
