@@ -18,7 +18,11 @@ export default class HomeScreen extends Component {
 
         return (
             <View style={homeScreen.container}>
+
                 <ImageBackground source={require('../images/whitePlate.jpg')} style={homeScreen.headerImage}>
+                    <View style={homeScreen.profile}>
+                        <Image source={require('../images/profilePic.jpg')} style={homeScreen.profilePicture} />    
+                    </View> 
                     <Text style={homeScreen.headerText}>Buggee</Text>
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
@@ -26,8 +30,8 @@ export default class HomeScreen extends Component {
                 <View style={homeScreen.searchContainer}>
                     <View style={homeScreen.searchBar}>
                         <View style={homeScreen.input}>
-                            <TextInput  placeholder='Search Your Recipes' style={{ fontSize:15,paddingLeft:15 }} />
-                            <Icon name='search'></Icon>
+                            <Icon name='search' stye={{ paddingLeft: 10 }}></Icon>
+                            <TextInput placeholder='Search Your Recipes' style={{ fontSize: 15, paddingLeft: 15 }} />
                         </View>
                     </View>
                 </View>
@@ -71,28 +75,27 @@ const homeScreen = StyleSheet.create({
         flex: 1.5,
         borderBottomWidth: 3,
         borderBottomColor: 'red',
-
     },
 
     headerText: {
         fontWeight: 'bold',
-        fontSize: 27,
+        fontSize: 38,
         display: 'flex',
         textAlign: 'center',
         justifyContent: 'center',
-        marginTop: '14%',
+        marginTop: 0,
         color: 'white',
-        fontFamily: 'ChalkboardSE-Bold'
+        fontFamily: 'BradleyHandITCTT-Bold'
     },
 
     headerSubText: {
-        fontSize: 15,
+        fontSize: 20,
         display: 'flex',
         fontWeight: '100',
         textAlign: 'center',
         justifyContent: 'center',
         color: 'white',
-        fontFamily: 'ChalkboardSE-Bold'
+        fontFamily: 'BradleyHandITCTT-Bold'
     },
 
     iconContainer: {
@@ -103,7 +106,6 @@ const homeScreen = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-around',
         paddingBottom: 10,
-        // paddingTop: 7
     },
 
     eachIcon: {
@@ -113,7 +115,7 @@ const homeScreen = StyleSheet.create({
     },
 
     iconText: {
-        fontFamily: 'ChalkboardSE-Bold',
+        fontWeight: 'bold',
         fontSize: 13,
         alignSelf: "center",
     },
@@ -138,13 +140,28 @@ const homeScreen = StyleSheet.create({
     },
 
     input: {
-       
         borderRadius: 20,
-
         height: 35,
-     backgroundColor: 'white',
-     flexDirection: 'row',
-     padding: 5,
-     alignItems: 'center',
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        padding: 5,
+        alignItems: 'center',
+    },
+
+    
+    profile: {
+        flex: .5
+    },
+   
+
+    profilePicture: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        borderColor: 'red',
+        borderWidth: 1.5,
+        marginLeft: 5,
+        marginTop: 5
     }
+    
 });
