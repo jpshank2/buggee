@@ -1,10 +1,28 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import FilterMenu from '../Fragments/FilterMenu';
+import React, { Component } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+  Picker
+} from "react-native";
+import FilterMenu from "../Fragments/FilterMenu";
+import Ionicons from "@expo/vector-icons/Ionicons.js";
+import ListScreen from "./ListScreen";
+
+import {
+  StackNavigator,
+  DrawerItems,
+  SafeAreaView
+} from "react-navigation";
 
 export default class SearchScreen extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
         this.state = {
             text: "",
@@ -12,28 +30,27 @@ export default class SearchScreen extends Component {
             health: [],
         }
     }
+  static navigationOptions = {
+    title: "Search"
+  };
 
-    static navigationOptions = {
-        title: "Search",
+  handleText = e => {
+    this.setState({ text: e.target.value });
+  };
+
+  selectDiet = e => {
+    this.setState({ diet: e });
+  };
+
+  addHealth = e => {
+    if (this.state.health.length === 0) {
+        this.setState({ health: [e] })
+    } else {
+        this.setState({ health: [...this.state.health, e] })
     }
+}
 
-    handleText = (e) => {
-        this.setState({ text: e.target.value })
-    }
-
-    selectDiet = (e) => {
-        this.setState({ diet: e })
-    }
-
-    addHealth = e => {
-        if (this.state.health.length === 0) {
-            this.setState({ health: [e] })
-        } else {
-            this.setState({ health: [...this.state.health, e] })
-        }
-    }
-
-    render() {
+  render() {
         return (
             <View style={searchScreen.container}>
                 <Text>Search for Recipes!</Text>
@@ -77,17 +94,17 @@ export default class SearchScreen extends Component {
 }
 
 const searchScreen = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    input: {
-        height: 40,
-        width: 200,
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 20
-    }
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  input: {
+    height: 40,
+    width: 200,
+    borderColor: "gray",
+    borderWidth: 1,
+    margin: 20
+  }
 });
