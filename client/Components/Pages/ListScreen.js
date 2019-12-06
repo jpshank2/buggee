@@ -30,7 +30,7 @@ export default class ListScreen extends Component {
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Groceries")}
           >
-            <Text style={listScreen.title}> Groceries </Text>
+            <Text style={listScreen.title}> Pantry </Text>
           </TouchableOpacity>
           <View>
             <Text> Olive Oil </Text>
