@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
+import GroceryList from '../Fragments/GroceryList';
 
 export default class GroceryListScreen extends Component {
     static navigationOptions = {
-        title: "Grocery List",
+        title: "Pantry List",
     }
 
     render() {
         return (
             <View style={groceryListScreen.container}>
-                <Text>This is your Grocery List</Text>
+                <Text>Your Pantry List:</Text>
+                <GroceryList />
             </View>
         )
     }

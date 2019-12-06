@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
+import GroceryList from "../Fragments/GroceryList";
 
 export default class ListScreen extends Component {
   static navigationOptions = {
@@ -33,11 +34,7 @@ export default class ListScreen extends Component {
             <Text style={listScreen.title}> Pantry </Text>
           </TouchableOpacity>
           <View>
-            <Text> Olive Oil </Text>
-            <Text> Garlic </Text>
-            <Text> White Wine </Text><Text> Chicken Stock </Text>
-            <Text> Parsley </Text><Text> Oregano </Text><Text> Salt </Text>
-            <Text> Pepper </Text>
+            <GroceryList />
           </View>
         </ScrollView>
       </View>

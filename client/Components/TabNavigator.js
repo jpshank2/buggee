@@ -13,7 +13,7 @@ import { createStackNavigator } from "react-navigation-stack";
 const TabNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: createStackNavigator({ Home: HomeScreen }),
+      screen: HomeScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name={`ios-home`} color={tintColor} size={30} />
