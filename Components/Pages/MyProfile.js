@@ -2,19 +2,21 @@ import React, { Component, Fragment } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
 
-export default class HomeScreen extends Component {
-
+export default class MyProfileScreen extends Component {
+  static navigationOptions = {
+    title: "Profile"
+  };
 
   render() {
     return (
-        <View style={homeScreen.container}>
-          <Text> Hey there </Text>
+        <View style={myProfileScreen.container}>
+          <Text> Timmy Turner </Text>
         </View>
     );
   }
 }
 
-const homeScreen = StyleSheet.create({
+const myProfileScreen = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",

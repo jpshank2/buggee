@@ -11,9 +11,6 @@ import {
   Picker
 } from "react-native";
 import FilterMenu from "../Fragments/FilterMenu";
-import DrawerNavigator from "../DrawerNavigator"
-import Ionicons from "@expo/vector-icons/Ionicons.js";
-import ListScreen from "./ListScreen";
 
 import { Container, Content, Header, Body, Icon, Right } from "native-base";
 import {

@@ -2,36 +2,43 @@ import React, { Component } from "react";
 import { Platform, Dimensions } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons.js";
 
-import HomeScreen from './Pages/HomeScreen'
+import SettingsScreen from './Pages/SettingsScreen'
 import ListScreen from "./Pages/ListScreen";
 import SearchScreen from "./Pages/SearchScreen";
 import { createAppContainer } from "react-navigation";
 
-import SettingsButton from './SettingsButton'
-import { createDrawerNavigator } from "react-navigation-drawer";
-import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator,  } from "react-navigation-drawer";
 
 const WIDTH = Dimensions.get("window").width;
 
-const DrawerNavigatorConfig = {
+const DrawerConfig = {
   drawerWidth: WIDTH * 0.83,
   drawerPosition: "right",
-  initialRoute: HomeScreen
+  // initialRoute: ProfileScreen
+ 
 };
 
-const DNav = createDrawerNavigator(
-  {
-    // Home: {
-    //   screen: HomeScreen
-    // },
+const DrawerNavigator = createDrawerNavigator({
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: { 
+        drawerLabel: 'Settings' 
+      }
+    },
     Lists: {
-      screen: ListScreen
+      screen: ListScreen,
+      navigationOptions: { 
+        headerTitle: 'Lists' 
+      }
     },
     Search: {
-      screen: SearchScreen
+      screen: SearchScreen,
+      navigationOptions: { 
+        drawerLabel: 'Search' 
+      }
     }
   },
-  DrawerNavigatorConfig
+  DrawerConfig
 );
 
-export default createAppContainer(DNav);
+export default createAppContainer(DrawerNavigator);
