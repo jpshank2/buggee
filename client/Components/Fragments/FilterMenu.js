@@ -15,10 +15,14 @@ export default class FilterMenu extends Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView >
                 <TouchableOpacity
+                    style={{ 
+                        backgroundColor: '#d3d3d3',
+                        borderRadius: 15
+                        }}
                     onPress={() => this.setState({diet: !this.state.diet, health: false})}>
-                    <Text style={{margin: 10}}>Click for Dietary Filters</Text>
+                    <Text style={{margin: 10, fontWeight: 'bold'}}>Dietary Filters</Text>
                 </TouchableOpacity>
                 <Picker
                     selectedValue={this.props.diet}
@@ -32,10 +36,17 @@ export default class FilterMenu extends Component {
                     <Picker.Item label="Low Carb" value="low-carb" />
                     <Picker.Item label="Low Fat" value="low-fat" />
                 </Picker>
+                <View style={FilterMenu.healthButton}>
                 <TouchableOpacity
+                 style={{ 
+                        backgroundColor: '#d3d3d3',
+                        borderRadius: 15
+                        }}
                     onPress={() => this.setState({health: !this.state.health, diet: false})}>
-                    <Text style={{margin: 10}}>Click for Health Filters</Text>
+                    <Text style={{margin: 10, fontWeight: 'bold'}}>
+                    Health Filters</Text>
                 </TouchableOpacity>
+                </View>
                 <Picker
                     selectedValue={this.props.health[(this.props.health.length-1)]}
                     style={{ height: 50, width: 200, display: this.state.health ? "flex" : "none" }}
@@ -71,3 +82,4 @@ export default class FilterMenu extends Component {
         )
     }
 }
+
