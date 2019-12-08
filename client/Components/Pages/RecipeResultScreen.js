@@ -19,7 +19,7 @@ export default class RecipeResultScreen extends Component {
                     let counter = 0;
                     let ingredients = info.ingredientLines.map(ingredient => {
                         counter++
-                        return <Text style={recipeResultScreen.ingredient} key={counter}><FontAwesome name={`circle`} size={15} /> {ingredient}</Text>
+                        return <Text style={recipeResultScreen.ingredient} key={counter}><FontAwesome name={`circle`} size={10} /> {ingredient}</Text>
                     })
                     return (
                         <ScrollView style={recipeResultScreen.container} key={info.url}>
@@ -55,7 +55,8 @@ const recipeResultScreen = StyleSheet.create({
     image: {
         height: 300, 
         width: 300, 
-        alignSelf: "center"
+        alignSelf: "center",
+        borderRadius: 10
     },
 
     title: {
