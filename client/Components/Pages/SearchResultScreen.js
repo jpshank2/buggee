@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Heart from '../Fragments/Heart';
@@ -84,7 +84,7 @@ export default class SearchResultScreen extends Component {
     render() {
         return (
             <View style={searchResultScreen.container}>
-                <Text>Recipes Containing: {JSON.stringify(this.props.navigation.getParam("q", "null"))}</Text>
+                <Text style={searchResultScreen.showingText}>Showing results for: {JSON.stringify(this.props.navigation.getParam("q", "null"))}</Text>
                 <ScrollView>
                     {this.state.loading ? <Text style={searchResultScreen.loading}>Loading...</Text> : this.state.recipes.map(recipe => {
                         let uriArray = recipe.recipe.uri.split("");
@@ -103,7 +103,7 @@ export default class SearchResultScreen extends Component {
                                     style={searchResultScreen.image}
                                     source={{ uri: recipe.recipe.image }}
                                 />
-                                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "500" }}>{recipe.recipe.label}</Text>
+                                <Text style={{ textAlign: "center", fontSize: 15, fontWeight: "500" }}>{recipe.recipe.label}</Text>
                                 <Heart />
                                 <TouchableOpacity
                                     onPress={() => {
@@ -111,7 +111,7 @@ export default class SearchResultScreen extends Component {
                                             r: id
                                         })
                                     }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: "300" }}>Details</Text>
+                                    <Text style={{ textAlign: 'center', fontSize: 15, fontWeight: "300" }}>Details</Text>
                                 </TouchableOpacity>
                             </View>
                         )
@@ -129,21 +129,28 @@ const searchResultScreen = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    image: {
-        width: 150, 
-        height: 150,
-        alignSelf: "center",
-        margin: 5
+    showingText: {
+        margin: 10,
+        fontSize: 14,
+        opacity: .7
     },
-
+    image: {
+        width: 300,
+        height: 300,
+        alignSelf: "center",
+        margin: 5,
+        borderRadius: 3
+    },
+    
     recipe: {
         borderWidth: 0.5,
+        borderRadius: 15,
         borderColor: "black",
-        margin: 10,
+        padding: 2,
+        marginBottom: 20,
     },
 
     loading: {
-        fontSize: 50
+        fontSize: 25
     }
 });

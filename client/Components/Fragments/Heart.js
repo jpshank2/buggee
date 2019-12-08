@@ -18,8 +18,9 @@ export default class Heart extends Component {
                     onPress={() => {
                         this.setState({ color: !this.state.color })
                     }} >
-                    <Ionicons name={"ios-heart-empty"} size={40} color={this.state.color ? "red" : "black"} />
-                    <Text style={{fontSize: 24}}>Favorite Recipe</Text>
+                    <Ionicons name={"ios-heart-empty"} size={20} color={this.state.color ? "red" : "black"}
+                    style={{ marginLeft: 8 }} />
+                    <Text style={{fontSize: 14}}>Favorite Recipe</Text>
                 </TouchableOpacity>
             </View>
         )
