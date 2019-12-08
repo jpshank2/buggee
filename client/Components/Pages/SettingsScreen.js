@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   View,
   Text,
@@ -14,16 +14,23 @@ export default class SettingsScreen extends Component {
 
   render() {
     return (
- <View style={settingsScreen.container}> 
-        <ScrollView style={settingsScreen.settingsContainer}>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Profile")}
-          >
-            <Text style={settingsScreen.title}> My Profile </Text>
-          </TouchableOpacity>
+      <Fragment>
+        <View style={settingsScreen.container}>
+          <ScrollView style={settingsScreen.settingsContainer}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Profile")}
+            >
+              <Text style={settingsScreen.list}> My Profile </Text>
+            </TouchableOpacity>
 
-        </ScrollView>
-      </View>
+            <TouchableOpacity
+            // onPress={() => this.props.navigation.navigate("Profile")}
+            >
+              <Text style={settingsScreen.list}> Saved Filters </Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+      </Fragment>
     );
   }
 }
@@ -36,14 +43,13 @@ const settingsScreen = StyleSheet.create({
     justifyContent: "center"
   },
   title: {
-    fontSize: 40
+    fontSize: 20
   },
   list: {
     fontSize: 24,
     marginLeft: 10
   },
-  settingsContainer: {
-    flex: 1,
-    marginTop: 40
-  }
+  // settingsContainer: {
+  //   flex: 1
+  // }
 });

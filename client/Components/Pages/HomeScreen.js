@@ -46,7 +46,7 @@ export default class HomeScreen extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            this.props.navigation.navigate("Settings")
+                            this.props.navigation.navigate("Profile")
                         }}>
                         <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Profile</Text>
