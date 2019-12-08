@@ -23,8 +23,8 @@ export default class Heart extends Component {
                     <Ionicons 
                     name={this.state.fill ? `ios-heart` : `ios-heart-empty`} 
                     color={this.state.fill ? `red` : `#fff`}
-                    size={40} 
-                    style={{ marginLeft: 8 }} />
+                    size={36} 
+                    style={{ justifyContent: "center", marginLeft: 40 }} />
                 </TouchableOpacity>
             </View>
         )

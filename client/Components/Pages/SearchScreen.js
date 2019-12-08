@@ -89,7 +89,7 @@ export default class SearchScreen extends Component {
             <Text
               style={{
                 display: this.state.diet == "no" ? "none" : "flex",
-                fontSize: 20,
+                fontSize: 15,
                 marginBottom: 15
               }}
             >
@@ -98,7 +98,7 @@ export default class SearchScreen extends Component {
             <Text
               style={{
                 display: this.state.health.length == 0 ? "none" : "flex",
-                fontSize: 20,
+                fontSize: 15,
                 marginBottom: 15
               }}
             >

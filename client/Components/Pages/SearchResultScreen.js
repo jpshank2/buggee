@@ -137,7 +137,8 @@ export default class SearchResultScreen extends Component {
                       style={{
                         flexDirection: "row",
                         textAlign: "center",
-                        justifyContent: "center"
+                        justifyContent: "center",
+    
                       }}
                     >
                       <View
@@ -212,16 +213,24 @@ const searchResultScreen = StyleSheet.create({
     alignSelf: "center",
     margin: 5,
     borderRadius: 15,
-    opacity: 1
+    opacity: 1,
+    shadowOffset: { width: 2, height: 1 },
+    shadowColor: "gray",
+    shadowRadius: 1,
+    shadowOpacity: .2
   },
 
   recipe: {
     justifyContent: "center",
-    backgroundColor: "#03CEA4",
+    backgroundColor: "#bba47a",
     borderRadius: 15,
     marginHorizontal: "auto",
     padding: 2,
-    marginBottom: 20
+    marginBottom: 20,
+    shadowOffset: { width: 2, height: 1 },
+    shadowColor: "gray",
+    shadowRadius: 1,
+    shadowOpacity: .2
   },
 
   loading: {
