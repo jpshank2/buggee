@@ -21,7 +21,7 @@ export default class ShoppingList extends Component {
             <View>
                 <Text>Add Item:</Text>
                 <TextInput
-                    ref={input => {this.textInput = input}}
+                    ref={input => { this.textInput = input }}
                     placeholder="New Item"
                     onChangeText={newItem => this.setState({ newItem })}
                     onSubmitEditing={() => {
@@ -31,7 +31,16 @@ export default class ShoppingList extends Component {
                 {this.props.shoppingList.map((items, index) => {
                     return (
                         <View key={index}>
-                            <Text>{items}</Text>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.props.addShoppingToPantry(items)
+                                }}
+                                onLongPress={() => {
+                                    this.props.removeShopping(items)
+                                    alert(`You removed ${items} from your shopping list!`)
+                                }}>
+                                <Text>{items}</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 })}

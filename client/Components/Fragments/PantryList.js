@@ -31,7 +31,13 @@ export default class GroceryList extends Component {
                 {this.props.pantryList.map((items, index) => {
                     return (
                         <View key={index}>
+                            <TouchableOpacity
+                                onLongPress={() => {
+                                    this.props.removePantry(items)
+                                    alert(`You removed ${items} from your pantry list!`)
+                                }}>
                             <Text>{items}</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 })}

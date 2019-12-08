@@ -21,6 +21,7 @@ export default class RecipeResultScreen extends Component {
                         counter++
                         return <Text style={recipeResultScreen.ingredient} key={counter}><FontAwesome name={`circle`} size={15} /> {ingredient}</Text>
                     })
+                    console.log(ingredients)
                     return (
                         <ScrollView style={recipeResultScreen.container} key={info.url}>
                             <Image
@@ -33,6 +34,15 @@ export default class RecipeResultScreen extends Component {
                             <Text selectable>{info.url}</Text>
                             </View>
                             {ingredients}
+                            <TouchableOpacity style={recipeResultScreen.add}
+                                onPress={() => {
+                                    console.log(ingredients)
+                                    this.props.navigation.navigate("Lists", {
+                                        ingredients: ingredients
+                                    })
+                                }}>
+                                <FontAwesome name={"plus-circle"} size={30} /><Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
+                            </TouchableOpacity>
                         </ScrollView>
                     )
                 })
@@ -76,5 +86,15 @@ const recipeResultScreen = StyleSheet.create({
     ingredient: {
         marginLeft: 8,
         fontSize: 25,
+    },
+
+    add: {
+        flexDirection: "row",
+        margin: 10,
+        justifyContent: "space-evenly"
+    },
+
+    addText: {
+        fontSize: 30
     }
 })

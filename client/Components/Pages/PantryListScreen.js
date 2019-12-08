@@ -14,7 +14,9 @@ export default class GroceryListScreen extends Component {
         return (
             <View style={groceryListScreen.container}>
                 <Text>Your Pantry List:</Text>
-                <GroceryList addPantry={this.props.navigation.getParam("addPantry", "null")} 
+                <GroceryList 
+                    removePantry={this.props.navigation.getParam("removePantry", "null")}
+                    addPantry={this.props.navigation.getParam("addPantry", "null")} 
                     pantryList={this.props.navigation.getParam("pantryList", "null")}/>
             </View>
         )

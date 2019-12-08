@@ -14,7 +14,8 @@ export default class ShoppingListScreen extends Component {
         return (
             <View style={shoppingListScreen.container}>
                 <Text>Your Shopping List:</Text>
-                <ShoppingList addShopping={this.props.navigation.getParam("addShopping", "null")} 
+                <ShoppingList addShoppingToPantry={this.props.navigation.getParam("addShoppingToPantry", "null")}
+                    addShopping={this.props.navigation.getParam("addShopping", "null")} 
                     shoppingList={this.props.navigation.getParam("shoppingList", "null")}/>
             </View>
         )
