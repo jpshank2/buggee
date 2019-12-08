@@ -214,20 +214,20 @@ const searchResultScreen = StyleSheet.create({
     margin: 5,
     borderRadius: 15,
     opacity: 1,
-    shadowOffset: { width: 2, height: 1 },
+    shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
-    shadowOpacity: .2
+    shadowOpacity: .35
   },
 
   recipe: {
     justifyContent: "center",
-    backgroundColor: "#bba47a",
+    backgroundColor: "#ddd",
     borderRadius: 15,
     marginHorizontal: "auto",
     padding: 2,
     marginBottom: 20,
-    shadowOffset: { width: 2, height: 1 },
+    shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
     shadowOpacity: .2

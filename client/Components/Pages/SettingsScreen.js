@@ -36,7 +36,7 @@ const settingsScreen = StyleSheet.create({
     justifyContent: "center"
   },
   title: {
-    fontSize: 40
+    fontSize: 20
   },
   list: {
     fontSize: 24,

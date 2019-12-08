@@ -30,6 +30,8 @@ export default class MyProfileScreen extends Component {
   render() {
     return this.state.editIsClicked ? (
      <View style={myProfileScreen.container}>
+     <ScrollView>
+
      <Text> Edit Bio </Text>
         <TextInput
           style={myProfileScreen.input}
@@ -56,6 +58,7 @@ export default class MyProfileScreen extends Component {
             }
           }
         />
+     </ScrollView>
    </View>
     ) : (
       <View style={myProfileScreen.container}>
