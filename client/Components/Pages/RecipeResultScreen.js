@@ -48,25 +48,14 @@ export default class RecipeResultScreen extends Component {
                   flexDirection: "row",
                   justifyContent: "center",
                   marginLeft: 10,
-                  textAlign: "center"
+                  textAlign: "center",
+                  maxWidth: "85%",
+                  display: "flex",
+                  flexWrap: "wrap"
                 }}
               >
-                <View
-                  style={{
-                    flexDirection: "column"
-                  }}
-                >
-                  <Text style={recipeResultScreen.title}>{info.label}</Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "column"
-                  }}
-                >
-                  <Text style={recipeResultScreen.source}>
-                    by: {info.source}
-                  </Text>
-                </View>
+                <Text style={recipeResultScreen.title}>{info.label}</Text>
+                <Text style={recipeResultScreen.source}>by: {info.source}</Text>
               </View>
               <View style={recipeResultScreen.url}>
                 <Text selectable>Recipe Website:</Text>

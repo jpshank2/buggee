@@ -104,7 +104,7 @@ export default class SearchResultScreen extends Component {
   render() {
     return (
       <View style={searchResultScreen.container}>
-        <ScrollView>
+        <ScrollView style={{minWidth: "95%"}}>
           <Text style={searchResultScreen.showingText}>
             Showing results for:{" "}
             {JSON.stringify(this.props.navigation.getParam("q", "null"))}
@@ -135,17 +135,15 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
-                        flexDirection: "row",
-                        textAlign: "center",
-                        justifyContent: "center",
-    
+                        justifyContent: "center"
                       }}
                     >
                       <View
                         style={{
                           flexDirection: "column",
                           justifyContent: "center",
-                          opacity: 1
+                          opacity: 1,
+                          display: "flex"
                         }}
                       >
                         <Text
@@ -153,7 +151,10 @@ export default class SearchResultScreen extends Component {
                             textAlign: "left",
                             fontSize: 20,
                             fontWeight: "500",
-                            color: "#000"
+                            color: "#000",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            paddingLeft: 5
                           }}
                         >
                           {recipe.recipe.label}
@@ -172,6 +173,7 @@ export default class SearchResultScreen extends Component {
                               fontWeight: "300",
                               marginTop: 3,
                               marginBottom: 3,
+                              paddingLeft: 6
                             }}
                           >
                             Details
@@ -196,11 +198,13 @@ export default class SearchResultScreen extends Component {
 const searchResultScreen = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 0,
-    marginRight: 0,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    display: "flex",
+    flexWrap: "wrap",
+    maxWidth: "90%",
+    minWidth: "90%"
   },
   showingText: {
     margin: 10,
@@ -210,6 +214,8 @@ const searchResultScreen = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
+    maxWidth: "60%",
+    maxHeight: "60%",
     alignSelf: "center",
     margin: 5,
     borderRadius: 15,
@@ -217,20 +223,22 @@ const searchResultScreen = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
-    shadowOpacity: .35
+    shadowOpacity: 0.35
   },
 
   recipe: {
     justifyContent: "center",
     backgroundColor: "#ddd",
     borderRadius: 15,
-    marginHorizontal: "auto",
     padding: 2,
     marginBottom: 20,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
-    shadowOpacity: .2
+    shadowOpacity: 0.2,
+    display: "flex",
+    flexWrap: "wrap",
+    maxWidth: "95%"
   },
 
   loading: {
