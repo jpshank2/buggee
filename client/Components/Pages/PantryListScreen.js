@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
-import GroceryList from '../Fragments/GroceryList';
+import GroceryList from '../Fragments/PantryList';
 
 export default class GroceryListScreen extends Component {
+    constructor(props) {
+        super(props)
+    }
     static navigationOptions = {
         title: "Pantry List",
     }
@@ -11,7 +14,8 @@ export default class GroceryListScreen extends Component {
         return (
             <View style={groceryListScreen.container}>
                 <Text>Your Pantry List:</Text>
-                <GroceryList />
+                <GroceryList addPantry={this.props.navigation.getParam("addPantry", "null")} 
+                    pantryList={this.props.navigation.getParam("pantryList", "null")}/>
             </View>
         )
     }

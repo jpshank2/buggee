@@ -6,35 +6,71 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import GroceryList from "../Fragments/GroceryList";
+import GroceryList from "../Fragments/PantryList";
+import ShoppingList from "../Fragments/ShoppingList";
 
 export default class ListScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pantryList: [
+        "Olive Oil", 
+        "Garlic", 
+        "White Wine", 
+        "Chicken Stock", 
+        "Parsley", 
+        "Oregano", 
+        "Salt", 
+        "Pepper"
+      ],
+      shoppingList: [
+        "Chicken",
+        "Potatoes",
+        "Frozen Peas"
+      ]
+    }
+  }
+
   static navigationOptions = {
     title: "Lists"
   };
+
+  addPantry = (pantryItem) => {
+    this.setState({ pantryList: [...this.state.pantryList, pantryItem] })
+  }
+
+  addShopping = (shoppingItem) => {
+    this.setState({ shoppingList: [...this.state.shoppingList, shoppingItem] })
+  }
 
   render() {
     return (
       <View style={listScreen.container}>
         <ScrollView style={listScreen.listContainer}>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Shopping")}
+            onPress={() => this.props.navigation.navigate("Shopping", {
+              addShopping: this.addShopping,
+              shoppingList: this.state.shoppingList
+            })}
           >
             <Text style={listScreen.title}> Shopping </Text>
           </TouchableOpacity>
           <View>
-            <Text> Chicken </Text><Text> Potatoes </Text>
-            <Text> Frozen Peas </Text>
+            <ShoppingList addShopping={this.addShopping} shoppingList={this.state.shoppingList} />
           </View>
         </ScrollView>
         <ScrollView style={listScreen.listContainer}>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Groceries")}
+            onPress={() => this.props.navigation.navigate("Pantry", {
+              addPantry: this.addPantry,
+              pantryList: this.state.pantryList
+            })}
           >
             <Text style={listScreen.title}> Pantry </Text>
           </TouchableOpacity>
           <View>
-            <GroceryList />
+            <GroceryList addPantry={this.addPantry} pantryList={this.state.pantryList} />
           </View>
         </ScrollView>
       </View>
