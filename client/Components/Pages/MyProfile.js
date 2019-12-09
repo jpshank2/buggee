@@ -142,7 +142,7 @@ const myProfileScreen = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
-    shadowOpacity: 0.2
+    shadowOpacity: 0.2,
   },
   bioContainer: {
     backgroundColor: "#f2f2f2",

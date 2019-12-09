@@ -141,7 +141,9 @@ const searchScreen = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomColor: 'red',
+        borderBottomWidth: 2,
   },
   sectionStyle: {
     flexDirection: "row",
