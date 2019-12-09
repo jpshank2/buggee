@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, TextInput } from 'react-native'
 import { SearchBar, Icon } from 'react-native-elements';
 
 
@@ -28,14 +28,14 @@ export default class HomeScreen extends Component {
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
 
-                {/* <View style={homeScreen.searchContainer}>
+                <View style={homeScreen.searchContainer}>
                     <View style={homeScreen.searchBar}>
                         <View style={homeScreen.input}>
                             <Icon name='search' stye={{ paddingLeft: 10 }}></Icon>
-                            <TextInput placeholder='Search Your Recipes' style={{ fontSize: 15, paddingLeft: 15 }} />
+                            <TextInput placeholder='Search Your Cookbook' style={{ fontSize: 15, paddingLeft: 15 }} />
                         </View>
                     </View>
-                </View> */}
+                </View>
 
 
 
@@ -46,7 +46,7 @@ export default class HomeScreen extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {this.props.navigation.navigate('Search')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/magnifyingGlass.jpg')}></Image>
-                        <Text style={homeScreen.iconText}>Search Recipes</Text>
+                        <Text style={homeScreen.iconText}>Search New Recipes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {this.props.navigation.navigate('Lists')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
@@ -110,8 +110,8 @@ const homeScreen = StyleSheet.create({
     },
 
     eachIcon: {
-        width: 160,
-        height: 160,
+        width: 150,
+        height: 150,
         borderRadius: 30,
     },
 
