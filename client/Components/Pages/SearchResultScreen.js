@@ -104,7 +104,7 @@ export default class SearchResultScreen extends Component {
   render() {
     return (
       <View style={searchResultScreen.container}>
-        <ScrollView style={{minWidth: "95%"}}>
+        <ScrollView>
           <Text style={searchResultScreen.showingText}>
             Showing results for:{" "}
             {JSON.stringify(this.props.navigation.getParam("q", "null"))}
@@ -112,18 +112,18 @@ export default class SearchResultScreen extends Component {
           {this.state.loading ? (
             <Text style={searchResultScreen.loading}>Loading...</Text>
           ) : (
-            this.state.recipes.map(recipe => {
-              let uriArray = recipe.recipe.uri.split("");
-              let idArray = [];
-              for (let i = 0; i < uriArray.length; i++) {
-                if (uriArray[i] == "_") {
-                  for (let k = i + 1; k < uriArray.length; k++) {
-                    idArray.push(uriArray[k]);
+              this.state.recipes.map(recipe => {
+                let uriArray = recipe.recipe.uri.split("");
+                let idArray = [];
+                for (let i = 0; i < uriArray.length; i++) {
+                  if (uriArray[i] == "_") {
+                    for (let k = i + 1; k < uriArray.length; k++) {
+                      idArray.push(uriArray[k]);
+                    }
                   }
                 }
-              }
-              let id = idArray.join("");
-              return (
+                let id = idArray.join("");
+                return (
                   <View
                     style={searchResultScreen.recipe}
                     key={recipe.recipe.uri}
@@ -134,21 +134,20 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
+                        flexDirection: "row",
                         justifyContent: "center"
                       }}
                     >
                       <View
                         style={{
                           flexDirection: "column",
-                          justifyContent: "center",
                           opacity: 1,
-                          display: "flex"
                         }}
                       >
                         <Text
                           style={{
-                            textAlign: "left",
-                            fontSize: 20,
+                            textAlign: "center",
+                            fontSize: 30,
                             fontWeight: "500",
                             color: "#000",
                             display: "flex",
@@ -167,11 +166,10 @@ export default class SearchResultScreen extends Component {
                         >
                           <Text
                             style={{
-                              textAlign: "left",
-                              fontSize: 15,
+                              textAlign: "center",
+                              fontSize: 20,
                               fontWeight: "300",
-                              marginTop: 3,
-                              marginBottom: 3,
+                              margin: 5,
                               paddingLeft: 6
                             }}
                           >
@@ -179,14 +177,14 @@ export default class SearchResultScreen extends Component {
                           </Text>
                         </TouchableOpacity>
                       </View>
-                      <View style={{ flexDirection: "column" }}>
+                      <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
                         <Heart />
                       </View>
                     </View>
                   </View>
-              );
-            })
-          )}
+                );
+              })
+            )}
         </ScrollView>
       </View>
     );
@@ -197,12 +195,14 @@ const searchResultScreen = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignContent: "center",
     justifyContent: "center",
     display: "flex",
     flexWrap: "wrap",
-    maxWidth: "90%",
-    minWidth: "90%"
+    maxWidth: "100%",
+    minWidth: "90%",
+    borderBottomColor: 'red',
+    borderBottomWidth: 2,
   },
   showingText: {
     margin: 10,
@@ -212,10 +212,11 @@ const searchResultScreen = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    maxWidth: "60%",
-    maxHeight: "60%",
+    maxWidth: 300,
+    maxHeight: 300,
     alignSelf: "center",
     margin: 5,
+    padding: 5,
     borderRadius: 15,
     opacity: 1,
     shadowOffset: { width: 2, height: 2 },
@@ -226,6 +227,7 @@ const searchResultScreen = StyleSheet.create({
 
   recipe: {
     justifyContent: "center",
+    alignContent: "center",
     backgroundColor: "#ddd",
     borderRadius: 15,
     padding: 2,

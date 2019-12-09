@@ -13,9 +13,23 @@ export default class GroceryList extends Component {
         super(props);
 
         this.state = {
-            newItem: ""
+            pantryList: []
         }
     }
+
+    /*
+    componentDidMount() {
+        fetch("http://localhost:5000/api/add-item-here")
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                let pantryList = data.hits
+                this.setState({ pantryList: pantryList })
+            })
+    }
+    */
+
     render() {
         return (
             <View>

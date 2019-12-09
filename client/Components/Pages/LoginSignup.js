@@ -59,7 +59,6 @@ export default class Login extends Component {
             });
           }}
         >
-          <Text>Search</Text>
         </TouchableOpacity>
       </View>
     );
@@ -71,7 +70,9 @@ const loginScreen = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomColor: 'red',
+        borderBottomWidth: 2,
   },
   input: {
     height: 40,

@@ -24,7 +24,7 @@ export default class SettingsScreen extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity
-            // onPress={() => this.props.navigation.navigate("Profile")}
+              onPress={() => this.props.navigation.navigate("Filters")}
             >
               <Text style={settingsScreen.list}> Saved Filters </Text>
             </TouchableOpacity>
@@ -39,14 +39,16 @@ const settingsScreen = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: "flex-start",
+    justifyContent: "center",
+    borderBottomColor: 'red',
+    borderBottomWidth: 2,
   },
   title: {
     fontSize: 20
   },
   list: {
-    fontSize: 24,
+    fontSize: 20,
     marginLeft: 10
   },
   // settingsContainer: {

@@ -65,14 +65,12 @@ export default class ListScreen extends Component {
     this.setState({pantryList: newPantry})
   }
 
-  componentDidMount() {
-    console.log(this.props.navigation.getParam("ingredientsList", "null"))
-    if (this.props.navigation.getParam("ingredientsList", "null") !== "null") {
-      this.setState({shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredientsList", "null")]})
-    }
-  }
-
   render() {
+    console.log(this.props.navigation.getParam("ingredients", "null"))
+    if (this.props.navigation.getParam("ingredients", "null") != "null") {
+      console.log(this.props.navigation.getParam("ingredients"))
+      this.setState({shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")]})
+    } 
     return (
       <View style={listScreen.container}>
         <Text>Tap a Shopping List Item to Add it to Your Pantry and Remove it from Your Shopping List!</Text>
@@ -122,7 +120,9 @@ const listScreen = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomColor: 'red',
+        borderBottomWidth: 2,
   },
   title: {
     fontSize: 40

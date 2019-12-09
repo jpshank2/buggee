@@ -11,7 +11,7 @@ const ListNavigator = createStackNavigator(
         Main: ListScreen
     },
     {
-        initialRouteName: "Main"
+        initialRouteName: "Main",
     }
 );
 

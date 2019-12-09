@@ -29,5 +29,7 @@ const groceryListScreen = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        borderBottomColor: 'red',
+        borderBottomWidth: 2,
     },
 });

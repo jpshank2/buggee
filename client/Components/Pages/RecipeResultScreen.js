@@ -14,9 +14,8 @@ export default class RecipeResultScreen extends Component {
         super(props);
 
         this.state = {
-            isLoaded: false,
             information: [],
-            ingredientsList: []
+            ingredient: []
         };
     }
 
@@ -32,6 +31,7 @@ export default class RecipeResultScreen extends Component {
                 let information = data.map(info => {
                     let counter = 0;
                     let ingredients = info.ingredientLines.map(ingredient => {
+                        this.setState({ ingredient: [...this.state.ingredient, ingredient] })
                         counter++;
                         this.setState({ ingredientsList: [...this.state.ingredientsList, ingredient] })
                         return (
@@ -42,7 +42,7 @@ export default class RecipeResultScreen extends Component {
                     });
                     console.log("here")
                     return (
-                        <ScrollView style={recipeResultScreen.container} key={info.url}>
+                        <ScrollView key={info.url}>
                             <Image
                                 source={{ uri: info.image }}
                                 style={recipeResultScreen.image}
@@ -66,16 +66,6 @@ export default class RecipeResultScreen extends Component {
                                 <Text selectable>{info.url}</Text>
                             </View>
                             {ingredients}
-                            <TouchableOpacity
-                                onPress={() => {
-                                    // why isn't this...
-                                    console.log(this.state.ingredientsList)
-                                    this.props.navigation.navigate("Lists", {
-                                        ingredientsList: this.state.ingredientsList
-                                    })
-                                }}>
-                                <FontAwesome name={"plus-circle"} size={30} /><Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
-                            </TouchableOpacity>
                         </ScrollView>
                     );
                 });
@@ -84,21 +74,31 @@ export default class RecipeResultScreen extends Component {
     }
 
     render() {
-        // the same as this?
-        console.log(this.state.ingredientsList)
         return (
-            this.state.isLoaded ?
-                this.state.information :
-                <View>
-                    <Text>Loading...</Text>
-                </View>
-        )
+            this.state.information
+            // <View style={recipeResultScreen.container}>
+            //     <TouchableOpacity
+            //         onPress={() => {
+            //             this.props.navigation.navigate({routeName: "Lists", params: {
+            //                 ingredients: this.state.ingredient
+            //             },
+            //             key: "Main"
+            //             })
+            //         }}>
+            //         <FontAwesome name={"plus-circle"} size={25} />
+            //         <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
+            //     </TouchableOpacity>
+            //     {this.state.information}
+            // </View>
+        );
     }
 }
 
 const recipeResultScreen = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        borderBottomColor: 'red',
+        borderBottomWidth: 2,
     },
 
     image: {
@@ -134,6 +134,6 @@ const recipeResultScreen = StyleSheet.create({
     },
 
     addText: {
-        fontSize: 30
+        fontSize: 25
     }
 })
