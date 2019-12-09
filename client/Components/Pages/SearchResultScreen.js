@@ -104,7 +104,7 @@ export default class SearchResultScreen extends Component {
   render() {
     return (
       <View style={searchResultScreen.container}>
-        <ScrollView style={{ minWidth: "95%" }}>
+        <ScrollView>
           <Text style={searchResultScreen.showingText}>
             Showing results for:{" "}
             {JSON.stringify(this.props.navigation.getParam("q", "null"))}
@@ -134,15 +134,14 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
+                        flexDirection: "row",
                         justifyContent: "center"
                       }}
                     >
                       <View
                         style={{
                           flexDirection: "column",
-                          justifyContent: "center",
                           opacity: 1,
-                          display: "flex"
                         }}
                       >
                         <Text
@@ -213,10 +212,11 @@ const searchResultScreen = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    maxWidth: "60%",
-    maxHeight: "60%",
+    maxWidth: 300,
+    maxHeight: 300,
     alignSelf: "center",
     margin: 5,
+    padding: 5,
     borderRadius: 15,
     opacity: 1,
     shadowOffset: { width: 2, height: 2 },

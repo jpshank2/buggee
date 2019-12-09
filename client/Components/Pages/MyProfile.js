@@ -158,6 +158,7 @@ const myProfileScreen = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 12,
+    backgroundColor: "#fff",
     margin: 20,
     padding: 6
   },
@@ -170,6 +171,8 @@ const myProfileScreen = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
     padding: 8,
+    width: "auto",
+    textAlign: "center"
   },
   editPageText: {
     fontSize: 17
