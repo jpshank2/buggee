@@ -15,6 +15,7 @@ export default class HomeScreen extends Component {
 
     render() {
 
+        console.log("some bullshit for github")
         return (
             <View style={homeScreen.container}>
                 <ImageBackground source={require('../images/whitePlate.jpg')} style={homeScreen.headerImage}>
