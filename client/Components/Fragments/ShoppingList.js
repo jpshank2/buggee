@@ -16,6 +16,18 @@ export default class ShoppingList extends Component {
             newItem: ""
         }
     }
+
+    // componentDidMount() {
+    //     fetch("http://localhost:5000/api/add-item-here")
+    //         .then(res => {
+    //             return res.json()
+    //         })
+    //         .then(data => {
+    //             let shoppingList = data.hits
+    //             this.setState({ shoppingList: shoppingList })
+    //         })
+    // }
+
     render() {
         return (
             <View>
