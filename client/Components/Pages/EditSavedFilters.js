@@ -5,76 +5,110 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Picker
 } from "react-native";
 
 import { createStackNavigator } from "react-navigation-stack";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default class MyProfileScreen extends Component {
+import FilterMenu from "../Fragments/FilterMenu";
+
+export default class EditFiltersScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    handleText = e => {
+      this.setState({ text: e.target.value });
+    };
+
+    selectDiet = e => {
+      this.setState({ diet: e });
+    };
+
+    addHealth = e => {
+      if (this.state.health.length === 0) {
+        this.setState({ health: [e] });
+      } else {
+        this.setState({ health: [...this.state.health, e] });
+      }
+    };
+
+    this.state = {
+      filters: " ",
+      editIsClicked: false,
+      text: "",
+      diet: "no",
+      health: []
+    };
+  }
+
   static navigationOptions = {
     title: "Filters"
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filters: " ",
-      editIsClicked: false
-    };
-  }
-
   render() {
     return this.state.editIsClicked ? (
-      <View style={myProfileScreen.container}>
-        <ScrollView>
-          <Text style={myProfileScreen.editPageText}> Edit Display Name </Text>
-          <TextInput
-            style={myProfileScreen.input}
-            value={this.state.dnameInput}
-            placeholder={this.state.displayName}
-            onChangeText={dnameInput => this.setState({ dnameInput })}
-            returnKeyType="go"
-            onSubmitEditing={() => {
-              this.setState(
-                { displayName: this.state.displayName },
-                this.setState({ editIsClicked: false })
-              );
-            }}
+      <Fragment>
+        <View style={editFiltersScreen.container}>
+          <Text style={editFiltersScreen.editPageText}>
+            Select Filters to Save
+          </Text>
+          <FilterMenu
+            selectDiet={this.selectDiet}
+            diet={this.state.diet}
+            addHealth={this.addHealth}
+            health={this.state.health}
           />
-          <Text style={myProfileScreen.editPageText}> Edit Bio </Text>
-          <TextInput
-            style={myProfileScreen.input}
-            value={this.state.bioInput}
-            placeholder={this.state.bio}
-            onChangeText={bioInput => this.setState({ bioInput })}
-            returnKeyType="go"
-            onSubmitEditing={() => {
-              this.setState(
-                { bio: this.state.bioInput },
-                this.setState({ editIsClicked: false })
-              );
+          <TouchableOpacity>
+            <Text
+              style={{
+                display: this.state.diet == "no" ? "none" : "flex",
+                fontSize: 15,
+                marginBottom: 15
+              }}
+            >
+              Current Dietary Filter: {this.state.diet}
+            </Text>
+            <Text
+              style={{
+                display: this.state.health.length == 0 ? "none" : "flex",
+                fontSize: 15,
+                marginBottom: 15
+              }}
+            >
+              Current Health Filter(s): {this.state.health.join(", ")}
+            </Text>
+          </TouchableOpacity>
+          <View
+            style={{
+              padding: 4,
+              marginBottom: 150,
+              borderRadius: 10,
+              backgroundColor: "#d3d3d3",
+              flexDirection: "row",
+              shadowOffset: { width: 2, height: 1 },
+              shadowColor: "gray",
+              shadowRadius: 1,
+              shadowOpacity: 0.2
             }}
-          />
-          <Text style={myProfileScreen.editPageText}> Edit Location </Text>
-          <TextInput
-            style={myProfileScreen.input}
-            value={this.state.locationInput}
-            placeholder={this.state.location}
-            onChangeText={locationInput => this.setState({ locationInput })}
-            returnKeyType="go"
-            onSubmitEditing={() => {
-              this.setState(
-                { location: this.state.locationInput },
-                this.setState({ editIsClicked: false })
-              );
-            }}
-          />
-        </ScrollView>
-      </View>
+          >
+            <TouchableOpacity
+              style={{
+                flexDirection: "row"
+              }}
+              onPress={() => {
+                this.setState({ text: "", diet: "no", health: [] });
+              }}
+            >
+              <Ionicons name={`ios-trash`} size={20} />
+              <Text style={{ margin: 2, paddingLeft: 3 }}>Clear Filters</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Fragment>
     ) : (
-      <View style={myProfileScreen.container}>
+      <View style={editFiltersScreen.container}>
         <Text
           style={{
             fontSize: 30,
@@ -82,41 +116,48 @@ export default class MyProfileScreen extends Component {
             marginBottom: 10
           }}
         >
-          {this.state.displayName}
+          Current Saved Filters: "Display Saved Filters Here"
         </Text>
-        <View style={{ flexDirection: "row" }}>
-          <Ionicons
-            name={`ios-pin`}
-            size={18}
-            style={{
-              marginLeft: 8,
-              paddingRight: 5
-            }}
-          />
-          <Text
-            style={{
-              fontSize: 16,
-              paddingLeft: 5,
-              paddingRight: 8
-            }}
-          >
-            {this.state.location}
-          </Text>
-        </View>
-        <View style={myProfileScreen.bioContainer}>
-          <Text>{this.state.bio} </Text>
-        </View>
-        <ScrollView style={myProfileScreen.settingsContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ editIsClicked: true });
-              console.log("Clicked");
-            }}
-          >
-            <Text style={myProfileScreen.editButton}>Edit Profile</Text>
-          </TouchableOpacity>
-        </ScrollView>
+        <TouchableOpacity
+          onPress={() => {
+            this.setState({ editIsClicked: true });
+            console.log("Clicked");
+          }}
+        >
+          <Text style={editFiltersScreen.editButton}>Edit Filters</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const editFiltersScreen = StyleSheet.create({
+  container: {
+    paddingTop: 40,
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    textAlign: "left",
+    backgroundColor: "#ddd",
+    borderRadius: 15,
+    margin: 10,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "gray",
+    shadowRadius: 1,
+    shadowOpacity: 0.2
+  },
+  editButton: {
+    backgroundColor: "#fff",
+    borderRadius: 15,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "gray",
+    shadowRadius: 1,
+    shadowOpacity: 0.2,
+    marginTop: 20,
+    padding: 8,
+    width: "auto",
+    textAlign: "center"
+  }
+});

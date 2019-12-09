@@ -24,7 +24,7 @@ export default class SettingsScreen extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity
-            // onPress={() => this.props.navigation.navigate("Profile")}
+            onPress={() => this.props.navigation.navigate("Filters")}
             >
               <Text style={settingsScreen.list}> Saved Filters </Text>
             </TouchableOpacity>
