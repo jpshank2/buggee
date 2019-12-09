@@ -135,7 +135,8 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
-                        justifyContent: "center"
+                        justifyContent: "center",
+                        flexDirection: "column"
                       }}
                     >
                       <View
