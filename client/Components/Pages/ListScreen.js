@@ -66,9 +66,9 @@ export default class ListScreen extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.navigation.getParam("ingredients", "null"))
-    if (this.props.navigation.getParam("ingredients", "null") !== "null") {
-      this.setState({shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")]})
+    console.log(this.props.navigation.getParam("ingredientsList", "null"))
+    if (this.props.navigation.getParam("ingredientsList", "null") !== "null") {
+      this.setState({shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredientsList", "null")]})
     }
   }
 

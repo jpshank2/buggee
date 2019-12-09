@@ -14,7 +14,9 @@ export default class RecipeResultScreen extends Component {
         super(props);
 
         this.state = {
-            information: []
+            isLoaded: false,
+            information: [],
+            ingredientsList: []
         };
     }
 
@@ -31,12 +33,14 @@ export default class RecipeResultScreen extends Component {
                     let counter = 0;
                     let ingredients = info.ingredientLines.map(ingredient => {
                         counter++;
+                        this.setState({ ingredientsList: [...this.state.ingredientsList, ingredient] })
                         return (
                             <Text style={recipeResultScreen.ingredient} key={counter}>
                                 <FontAwesome name={`circle`} size={10} /> {ingredient}
                             </Text>
                         );
                     });
+                    console.log("here")
                     return (
                         <ScrollView style={recipeResultScreen.container} key={info.url}>
                             <Image
@@ -64,9 +68,10 @@ export default class RecipeResultScreen extends Component {
                             {ingredients}
                             <TouchableOpacity
                                 onPress={() => {
-                                    console.log(ingredients)
+                                    // why isn't this...
+                                    console.log(this.state.ingredientsList)
                                     this.props.navigation.navigate("Lists", {
-                                        ingredients: ingredients
+                                        ingredientsList: this.state.ingredientsList
                                     })
                                 }}>
                                 <FontAwesome name={"plus-circle"} size={30} /><Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
@@ -74,12 +79,20 @@ export default class RecipeResultScreen extends Component {
                         </ScrollView>
                     );
                 });
-                this.setState({ information: information });
+                this.setState({ information: information, isLoaded: true });
             });
     }
 
     render() {
-        return this.state.information;
+        // the same as this?
+        console.log(this.state.ingredientsList)
+        return (
+            this.state.isLoaded ?
+                this.state.information :
+                <View>
+                    <Text>Loading...</Text>
+                </View>
+        )
     }
 }
 
