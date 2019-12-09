@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, TextInput } from 'react-native'
+import { SearchBar, Icon } from 'react-native-elements';
+
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
@@ -16,37 +18,40 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={homeScreen.container}>
+
                 <ImageBackground source={require('../images/whitePlate.jpg')} style={homeScreen.headerImage}>
+                    <View style={homeScreen.profile}>
+                        <Image source={require('../images/profilePic.jpg')} style={homeScreen.profilePicture} />    
+                    </View> 
                     <Text style={homeScreen.headerText}>Buggee</Text>
                     <Text style={homeScreen.headerSubText}>From Recipe to Pantry</Text>
                 </ImageBackground>
 
+                <View style={homeScreen.searchContainer}>
+                    <View style={homeScreen.searchBar}>
+                        <View style={homeScreen.input}>
+                            <Icon name='search' stye={{ paddingLeft: 10 }}></Icon>
+                            <TextInput placeholder='Search Your Cookbook' style={{ fontSize: 15, paddingLeft: 15 }} />
+                        </View>
+                    </View>
+                </View>
+
+
+
                 <View style={homeScreen.iconContainer}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.props.navigation.navigate("Cookbook")
-                        }}>
-                        <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}></Image>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
+                        <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}/>
                         <Text style={homeScreen.iconText}>Your Cookbook</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.props.navigation.navigate("Search")
-                        }}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Search')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/magnifyingGlass.jpg')}></Image>
-                        <Text style={homeScreen.iconText}>Search Recipes</Text>
+                        <Text style={homeScreen.iconText}>Search New Recipes</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.props.navigation.navigate("Lists")
-                        }}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Lists')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
                         <Text style={homeScreen.iconText}>Shopping List and Pantry</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.props.navigation.navigate("Profile")
-                        }}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Profile</Text>
                     </TouchableOpacity>
@@ -70,28 +75,27 @@ const homeScreen = StyleSheet.create({
         flex: 1.5,
         borderBottomWidth: 3,
         borderBottomColor: 'red',
-
     },
 
     headerText: {
         fontWeight: 'bold',
-        fontSize: 27,
+        fontSize: 38,
         display: 'flex',
         textAlign: 'center',
         justifyContent: 'center',
-        marginTop: '14%',
+        marginTop: 0,
         color: 'white',
-        fontFamily: 'ChalkboardSE-Bold'
+        fontFamily: 'BradleyHandITCTT-Bold'
     },
 
     headerSubText: {
-        fontSize: 15,
+        fontSize: 20,
         display: 'flex',
         fontWeight: '100',
         textAlign: 'center',
         justifyContent: 'center',
         color: 'white',
-        fontFamily: 'ChalkboardSE-Bold'
+        fontFamily: 'BradleyHandITCTT-Bold'
     },
 
     iconContainer: {
@@ -102,7 +106,6 @@ const homeScreen = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-around',
         paddingBottom: 10,
-        // paddingTop: 7
     },
 
     eachIcon: {
@@ -112,11 +115,53 @@ const homeScreen = StyleSheet.create({
     },
 
     iconText: {
-        fontFamily: 'ChalkboardSE-Bold',
+        fontWeight: 'bold',
         fontSize: 13,
         alignSelf: "center",
     },
 
 
+    searchContainer: {
+        flex: 1,
+        marginTop: 131,
+        position: 'absolute',
+        alignSelf: 'center'
+    },
+
+    searchBar: {
+        height: 40,
+        flex: 1,
+        backgroundColor: 'red',
+        paddingHorizontal: 5,
+        width: 230,
+        borderTopColor: 'red',
+        borderTopWidth: 2.5,
+        borderRadius: 20,
+    },
+
+    input: {
+        borderRadius: 20,
+        height: 35,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        padding: 5,
+        alignItems: 'center',
+    },
+
+    
+    profile: {
+        flex: .5
+    },
+   
+
+    profilePicture: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        borderColor: 'red',
+        borderWidth: 1.5,
+        marginLeft: 5,
+        marginTop: 5
+    }
     
 });
