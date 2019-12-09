@@ -39,14 +39,14 @@ const settingsScreen = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center"
   },
   title: {
     fontSize: 20
   },
   list: {
-    fontSize: 24,
+    fontSize: 20,
     marginLeft: 10
   },
   // settingsContainer: {

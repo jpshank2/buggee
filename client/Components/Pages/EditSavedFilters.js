@@ -13,20 +13,14 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default class MyProfileScreen extends Component {
   static navigationOptions = {
-    title: "Profile"
+    title: "Filters"
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      displayName: "Jonathan Deer",
-      dnameInput: "",
-      bio:
-        "I'm seriously all about some food. It goes in my stomach, and I feel great when that happens haha",
-      bioinput: "",
-      location: "Brompton, AL",
-      locationInput: "",
+      filters: " ",
       editIsClicked: false
     };
   }
@@ -126,55 +120,3 @@ export default class MyProfileScreen extends Component {
     );
   }
 }
-
-const myProfileScreen = StyleSheet.create({
-  container: {
-    paddingTop: 40,
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    textAlign: "left",
-    backgroundColor: "#ddd",
-    borderRadius: 15,
-    margin: 10,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-    shadowOffset: { width: 2, height: 2 },
-    shadowColor: "gray",
-    shadowRadius: 1,
-    shadowOpacity: 0.2
-  },
-  bioContainer: {
-    backgroundColor: "#f2f2f2",
-    borderRadius: 8,
-    padding: 4,
-    marginTop: 6,
-    marginBottom: 6,
-    fontSize: 18
-  },
-  input: {
-    height: 40,
-    width: 200,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 12,
-    backgroundColor: "#fff",
-    margin: 20,
-    padding: 6
-  },
-  editButton: {
-    backgroundColor: '#fff',
-    borderRadius: 15,
-    shadowOffset: { width: 2, height: 2 },
-    shadowColor: "gray",
-    shadowRadius: 1,
-    shadowOpacity: 0.2,
-    marginTop: 20,
-    padding: 8,
-    width: "auto",
-    textAlign: "center"
-  },
-  editPageText: {
-    fontSize: 17
-  }
-});

@@ -217,6 +217,7 @@ const searchResultScreen = StyleSheet.create({
     maxHeight: 300,
     alignSelf: "center",
     margin: 5,
+    padding: 5,
     borderRadius: 15,
     opacity: 1,
     shadowOffset: { width: 2, height: 2 },
