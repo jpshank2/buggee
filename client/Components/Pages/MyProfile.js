@@ -81,69 +81,74 @@ export default class MyProfileScreen extends Component {
         </ScrollView>
       </View>
     ) : (
-        <View style={myProfileScreen.container}>
-          <View style={{ flexDirection: "row" }}>
-            <Text
-              style={{
-                fontSize: 30,
-                fontWeight: "bold",
-                marginBottom: 10
-              }}
-            >
-              {this.state.displayName}
-            </Text>
-            <Image source={require('../images/profilePic.jpg')} style={myProfileScreen.profilePicture} />
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Ionicons
-              name={`ios-pin`}
-              size={18}
-              style={{
-                marginLeft: 8,
-                paddingRight: 5
-              }}
-            />
-            <Text
-              style={{
-                fontSize: 16,
-                paddingLeft: 5,
-                paddingRight: 8
-              }}
-            >
-              {this.state.location}
-            </Text>
-          </View>
-          <View style={myProfileScreen.bioContainer}>
-            <Text>{this.state.bio} </Text>
-          </View>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({ editIsClicked: true });
-                console.log("Clicked");
-              }}
-            >
-              <Text style={myProfileScreen.editButton}>Edit Profile</Text>
-            </TouchableOpacity>
+      <View style={myProfileScreen.container}>
+        <View style={{ flexDirection: "row" }}>
+          <Text
+            style={{
+              fontSize: 30,
+              fontWeight: "bold",
+              marginTop: 25,
+              marginBottom: 0
+            }}
+          >
+            {this.state.displayName}
+          </Text>
+          <Image
+            source={require("../images/profilePic.jpg")}
+            style={myProfileScreen.profilePicture}
+          />
         </View>
-      );
+        <View style={{ flexDirection: "row" }}>
+          <Ionicons
+            name={`ios-pin`}
+            size={18}
+            style={{
+              marginLeft: 8,
+              paddingRight: 5
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 16,
+              paddingLeft: 5,
+              paddingRight: 8
+            }}
+          >
+            {this.state.location}
+          </Text>
+        </View>
+        <View style={myProfileScreen.bioContainer}>
+          <Text>{this.state.bio} </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            this.setState({ editIsClicked: true });
+            console.log("Clicked");
+          }}
+        >
+          <Text style={myProfileScreen.editButton}>Edit Profile</Text>
+        </TouchableOpacity>
+      </View>
+    );
   }
 }
 
 const myProfileScreen = StyleSheet.create({
   container: {
-    paddingTop: 10,
+    // paddingTop: 10,
     flex: 1,
-    backgroundColor: '#EEE7E2',
+    backgroundColor: "#EEE7E2",
     justifyContent: "center",
     textAlign: "left",
     borderRadius: 15,
     margin: 10,
     paddingHorizontal: 10,
-    marginBottom: 20,
+    marginTop: "5%",
+    marginBottom: "40%",
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.2
   },
   bioContainer: {
     backgroundColor: "#f2f2f2",
@@ -163,7 +168,7 @@ const myProfileScreen = StyleSheet.create({
     padding: 6
   },
   editButton: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 35,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
@@ -178,10 +183,10 @@ const myProfileScreen = StyleSheet.create({
     fontSize: 17
   },
   profilePicture: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    borderColor: 'red',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderColor: "red",
     borderWidth: 1.5,
     marginLeft: 30,
     marginTop: 5
