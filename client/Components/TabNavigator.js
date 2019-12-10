@@ -9,6 +9,7 @@ import SearchNavigator from "./SearchNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 
 import { createStackNavigator } from "react-navigation-stack";
+import ListScreen from "./Pages/ListScreen";
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -29,7 +30,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     Lists: {
-      screen: ListNavigator,
+      screen: ListScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name={`ios-list`} color={tintColor} size={30} />

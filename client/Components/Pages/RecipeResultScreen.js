@@ -73,21 +73,18 @@ export default class RecipeResultScreen extends Component {
 
     render() {
         return (
-            this.state.information
-            // <View style={recipeResultScreen.container}>
-            //     <TouchableOpacity
-            //         onPress={() => {
-            //             this.props.navigation.navigate({routeName: "Lists", params: {
-            //                 ingredients: this.state.ingredient
-            //             },
-            //             key: "Main"
-            //             })
-            //         }}>
-            //         <FontAwesome name={"plus-circle"} size={25} />
-            //         <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
-            //     </TouchableOpacity>
-            //     {this.state.information}
-            // </View>
+            <View style={recipeResultScreen.container}>
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.navigation.navigate("Lists", {
+                            ingredients: this.state.ingredient
+                        })
+                    }}>
+                    <FontAwesome name={"plus-circle"} size={25} />
+                    <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
+                </TouchableOpacity>
+                {this.state.information}
+            </View>
         );
     }
 }
@@ -132,6 +129,6 @@ const recipeResultScreen = StyleSheet.create({
     },
 
     addText: {
-        fontSize: 25
+        fontSize: 20
     }
 })
