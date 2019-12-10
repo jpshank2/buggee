@@ -136,7 +136,7 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
-                        //   flexDirection: "row",
+                          flexDirection: "row",
                         justifyContent: "center"
                       }}
                     >
@@ -159,6 +159,10 @@ export default class SearchResultScreen extends Component {
                         >
                           {recipe.recipe.label}
                         </Text>
+                          <View style={{ 
+                            flexDirection: "row", 
+                            justifyContent: "space-evenly" 
+                            }}>
                         <TouchableOpacity
                           onPress={() => {
                             this.props.navigation.navigate("Recipe", {
@@ -179,7 +183,6 @@ export default class SearchResultScreen extends Component {
                             Details
                           </Text>
                         </TouchableOpacity>
-                        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
                           <Heart />
                         </View>
                       </View>

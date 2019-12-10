@@ -5,7 +5,8 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Image
 } from "react-native";
 
 import { createStackNavigator } from "react-navigation-stack";
@@ -80,61 +81,61 @@ export default class MyProfileScreen extends Component {
         </ScrollView>
       </View>
     ) : (
-      <View style={myProfileScreen.container}>
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            marginBottom: 10
-          }}
-        >
-          {this.state.displayName}
-        </Text>
-        <View style={{ flexDirection: "row" }}>
-          <Ionicons
-            name={`ios-pin`}
-            size={18}
-            style={{
-              marginLeft: 8,
-              paddingRight: 5
-            }}
-          />
-          <Text
-            style={{
-              fontSize: 16,
-              paddingLeft: 5,
-              paddingRight: 8
-            }}
-          >
-            {this.state.location}
-          </Text>
+        <View style={myProfileScreen.container}>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontSize: 30,
+                fontWeight: "bold",
+                marginBottom: 10
+              }}
+            >
+              {this.state.displayName}
+            </Text>
+            <Image source={require('../images/profilePic.jpg')} style={myProfileScreen.profilePicture} />
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <Ionicons
+              name={`ios-pin`}
+              size={18}
+              style={{
+                marginLeft: 8,
+                paddingRight: 5
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 16,
+                paddingLeft: 5,
+                paddingRight: 8
+              }}
+            >
+              {this.state.location}
+            </Text>
+          </View>
+          <View style={myProfileScreen.bioContainer}>
+            <Text>{this.state.bio} </Text>
+          </View>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ editIsClicked: true });
+                console.log("Clicked");
+              }}
+            >
+              <Text style={myProfileScreen.editButton}>Edit Profile</Text>
+            </TouchableOpacity>
         </View>
-        <View style={myProfileScreen.bioContainer}>
-          <Text>{this.state.bio} </Text>
-        </View>
-        <ScrollView style={myProfileScreen.settingsContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ editIsClicked: true });
-              console.log("Clicked");
-            }}
-          >
-            <Text style={myProfileScreen.editButton}>Edit Profile</Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
-    );
+      );
   }
 }
 
 const myProfileScreen = StyleSheet.create({
   container: {
-    paddingTop: 40,
+    paddingTop: 10,
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#EEE7E2',
     justifyContent: "center",
     textAlign: "left",
-    backgroundColor: "#ddd",
     borderRadius: 15,
     margin: 10,
     paddingHorizontal: 10,
@@ -147,9 +148,8 @@ const myProfileScreen = StyleSheet.create({
   bioContainer: {
     backgroundColor: "#f2f2f2",
     borderRadius: 8,
-    padding: 4,
-    marginTop: 6,
-    marginBottom: 6,
+    padding: 10,
+    margin: 6,
     fontSize: 18
   },
   input: {
@@ -164,17 +164,26 @@ const myProfileScreen = StyleSheet.create({
   },
   editButton: {
     backgroundColor: '#fff',
-    borderRadius: 15,
+    borderRadius: 35,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,
     shadowOpacity: 0.2,
     marginTop: 20,
     padding: 8,
-    width: "auto",
+    width: "40%",
     textAlign: "center"
   },
   editPageText: {
     fontSize: 17
+  },
+  profilePicture: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    borderColor: 'red',
+    borderWidth: 1.5,
+    marginLeft: 30,
+    marginTop: 5
   }
 });
