@@ -66,12 +66,23 @@ export default class ListScreen extends Component {
     this.setState({ pantryList: newPantry })
   }
 
-  render() {
-    console.log(this.props.navigation.getParam("ingredients", "null"))
+  componentDidMount() {
     if (this.props.navigation.getParam("ingredients", "null") != "null") {
       console.log(this.props.navigation.getParam("ingredients"))
       this.setState({ shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")] })
     }
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.navigation.getParam("ingredients", "null") != "null") {
+  //     let newList = [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")]
+  //     if (newList != prevProps.shoppingList) {
+  //       this.setState({shoppingList: newList})
+  //     }
+  //   }
+  // }
+
+  render() {
     return (
       <View style={listScreen.container}>
         <ImageBackground source={require('../images/whitePlate.jpg')} style={listScreen.headerImage}>
@@ -86,7 +97,7 @@ export default class ListScreen extends Component {
           <View style={listScreen.listContainerBackground} >
             <Text style={listScreen.title}> Shopping </Text>
             <ScrollView >
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Shopping",
                   {
                     addShopping: this.addShopping,
@@ -96,7 +107,7 @@ export default class ListScreen extends Component {
                   })}
               >
 
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <View style={listScreen.list}>
                 <ShoppingList
                   style={listScreen.grocerylist}
@@ -111,7 +122,7 @@ export default class ListScreen extends Component {
           <View style={listScreen.listContainerBackground}>
             <Text style={listScreen.title}> Pantry </Text>
             <ScrollView >
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Pantry", {
                   addPantry: this.addPantry,
                   pantryList: this.state.pantryList,
@@ -119,7 +130,7 @@ export default class ListScreen extends Component {
                 })}
               >
 
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <View style={listScreen.list}>
                 <GroceryList
                   removePantry={this.removePantry}

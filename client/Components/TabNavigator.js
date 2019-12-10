@@ -4,11 +4,12 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons.js";
 import HomeScreen from "./Pages/HomeScreen";
 import BookmarkedScreen from "./Pages/BookmarkedScreen";
-import ListNavigator from "./ListNavigator";
+//import ListNavigator from "./ListNavigator";
 import SearchNavigator from "./SearchNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 
 import { createStackNavigator } from "react-navigation-stack";
+import ListScreen from "./Pages/ListScreen";
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -29,7 +30,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     Lists: {
-      screen: ListNavigator,
+      screen: ListScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name={`ios-list`} color={tintColor} size={30} />

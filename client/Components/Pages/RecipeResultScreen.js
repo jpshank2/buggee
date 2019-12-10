@@ -15,7 +15,7 @@ export default class RecipeResultScreen extends Component {
 
         this.state = {
             information: [],
-            ingredient: []
+            ingredient: [],
         };
     }
 
@@ -26,14 +26,15 @@ export default class RecipeResultScreen extends Component {
                 "null"
             )}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`
         )
-            .then(res => res.json())
+            .then(res => {
+                return res.json()
+            })
             .then(data => {
                 let information = data.map(info => {
                     let counter = 0;
                     let ingredients = info.ingredientLines.map(ingredient => {
                         this.setState({ ingredient: [...this.state.ingredient, ingredient] })
                         counter++;
-                        this.setState({ ingredientsList: [...this.state.ingredientsList, ingredient] })
                         return (
                             <Text style={recipeResultScreen.ingredient} key={counter}>
                                 <FontAwesome name={`circle`} size={10} /> {ingredient}
@@ -75,21 +76,22 @@ export default class RecipeResultScreen extends Component {
 
     render() {
         return (
-            this.state.information
-            // <View style={recipeResultScreen.container}>
-            //     <TouchableOpacity
-            //         onPress={() => {
-            //             this.props.navigation.navigate({routeName: "Lists", params: {
-            //                 ingredients: this.state.ingredient
-            //             },
-            //             key: "Main"
-            //             })
-            //         }}>
-            //         <FontAwesome name={"plus-circle"} size={25} />
-            //         <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
-            //     </TouchableOpacity>
-            //     {this.state.information}
-            // </View>
+            this.state.isLoaded ?
+            <View style={recipeResultScreen.container}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.props.navigation.navigate("Lists", {
+                                ingredients: this.state.ingredient
+                            })
+                        }}>
+                        <FontAwesome name={"plus-circle"} size={25} />
+                        <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
+                    </TouchableOpacity>
+                    {this.state.information}
+                </View> :
+                <View>
+                    <Text>Loading...</Text>
+                </View>
         );
     }
 }
