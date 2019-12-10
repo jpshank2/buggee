@@ -8,11 +8,13 @@ import {
   Button,
   TouchableOpacity,
   StyleSheet,
-  Picker
+  Picker,
+  ImageBackground
 } from "react-native";
 import FilterMenu from "../Fragments/FilterMenu";
 import Ionicons from "@expo/vector-icons/Ionicons.js";
 import ListScreen from "./ListScreen";
+
 
 import { StackNavigator, DrawerItems, SafeAreaView } from "react-navigation";
 
@@ -49,12 +51,13 @@ export default class SearchScreen extends Component {
   render() {
     return (
       <Fragment>
-        <View style={searchScreen.container}>
+        <ImageBackground source={require('../images/whitePlate.jpg')}  style={searchScreen.container}>
           <View style={searchScreen.sectionStyle}>
             <TextInput
               style={searchScreen.input}
               value={this.state.text}
               placeholder="Search recipe database"
+              placeholderTextColor='black'
               onChangeText={text => this.setState({ text })}
               returnKeyType="go"
               onSubmitEditing={() => {
@@ -85,12 +88,13 @@ export default class SearchScreen extends Component {
             addHealth={this.addHealth}
             health={this.state.health}
           />
-          <TouchableOpacity>
+          <TouchableOpacity style>
             <Text
               style={{
                 display: this.state.diet == "no" ? "none" : "flex",
                 fontSize: 15,
-                marginBottom: 15
+                marginBottom: 15,
+                color: 'white'
               }}
             >
               Current Dietary Filter: {this.state.diet}
@@ -99,7 +103,8 @@ export default class SearchScreen extends Component {
               style={{
                 display: this.state.health.length == 0 ? "none" : "flex",
                 fontSize: 15,
-                marginBottom: 15
+                marginBottom: 15,
+                color: 'white'
               }}
             >
               Current Health Filter(s): {this.state.health.join(", ")}
@@ -127,10 +132,10 @@ export default class SearchScreen extends Component {
               }}
             >
               <Ionicons name={`ios-trash`} size={20} />
-              <Text style={{ margin: 2, paddingLeft: 3 }}>Clear Filters</Text>
+              <Text style={{ margin: 2, paddingLeft: 3,}}>Clear Filters</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ImageBackground>
       </Fragment>
     );
   }
@@ -149,7 +154,7 @@ const searchScreen = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "transparent",
+    backgroundColor: "#dedede",
     borderColor: "gray",
     borderRadius: 5,
     borderWidth: 1.5,
@@ -157,9 +162,10 @@ const searchScreen = StyleSheet.create({
     margin: 10,
     width: "95%",
     paddingLeft: 5,
-    overflow: "hidden"
+    overflow: "hidden",
   },
   input: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#dedede',
   }
 });
