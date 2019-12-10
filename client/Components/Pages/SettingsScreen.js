@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from "react-native";
 
 export default class SettingsScreen extends Component {
@@ -15,21 +16,25 @@ export default class SettingsScreen extends Component {
   render() {
     return (
       <Fragment>
-        <View style={settingsScreen.container}>
-          <ScrollView style={settingsScreen.settingsContainer}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Profile")}
-            >
-              <Text style={settingsScreen.list}> My Profile </Text>
-            </TouchableOpacity>
+        
+          <View style={settingsScreen.container}>
+            <ImageBackground source={require('../images/whitePlate.jpg')} style={settingsScreen.headerImage}>
+              <Text style={settingsScreen.headerText}>Settings</Text>
+              </ImageBackground>
+            <ScrollView style={settingsScreen.settingsContainer}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Profile")}
+              >
+                <Text style={settingsScreen.list}> My Profile </Text>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-            // onPress={() => this.props.navigation.navigate("Profile")}
-            >
-              <Text style={settingsScreen.list}> Saved Filters </Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </View>
+              <TouchableOpacity
+              // onPress={() => this.props.navigation.navigate("Profile")}
+              >
+                <Text style={settingsScreen.list}> Saved Filters </Text>
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
       </Fragment>
     );
   }
@@ -42,14 +47,35 @@ const settingsScreen = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+
+    headerImage: {
+        width: '100%',
+        display: 'flex',
+        textAlign: 'center',
+        flex: .5,
+        borderBottomWidth: 3,
+        borderBottomColor: 'red',
+    },
+
+    headerText: {
+        fontWeight: 'bold',
+        fontSize: 38,
+        display: 'flex',
+        textAlign: 'center',
+        justifyContent: 'center',
+        marginTop: 60,
+        color: 'white',
+        fontFamily: 'BradleyHandITCTT-Bold'
+    },
+
   title: {
+    margin:5,
     fontSize: 20
   },
   list: {
     fontSize: 24,
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 6
   },
-  // settingsContainer: {
-  //   flex: 1
-  // }
+ 
 });

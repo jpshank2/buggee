@@ -37,7 +37,8 @@ export default class FilterMenu extends Component {
             style={{
               backgroundColor: "#d3d3d3",
               borderRadius: 15,
-              marginRight: 10
+              marginRight: 10,
+              color: 'white'
             }}
             onPress={() =>
               this.setState({ diet: !this.state.diet, health: false })
@@ -50,7 +51,8 @@ export default class FilterMenu extends Component {
           <TouchableOpacity
             style={{
               backgroundColor: "#d3d3d3",
-              borderRadius: 15
+              borderRadius: 15,
+              color: 'white'
             }}
             onPress={() =>
               this.setState({ health: !this.state.health, diet: false })
@@ -61,13 +63,13 @@ export default class FilterMenu extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
+        <ScrollView style={{backgroundColor: 'rgba(255, 255, 255, 0.7)', borderRadius: 20, margin: 3}}>
           <Picker
             selectedValue={this.props.diet}
             style={{
               height: 50,
               width: 200,
-              display: this.state.diet ? "flex" : "none"
+              display: this.state.diet ? "flex" : "none",
             }}
             onValueChange={(itemValue, itemPosition) =>
               this.props.selectDiet(itemValue)
@@ -84,7 +86,8 @@ export default class FilterMenu extends Component {
             style={{
               height: 50,
               width: 200,
-              display: this.state.health ? "flex" : "none"
+              display: this.state.health ? "flex" : "none",
+              color: 'white'
             }}
             onValueChange={(itemValue, itemPosition) => {
               this.props.addHealth(itemValue);
