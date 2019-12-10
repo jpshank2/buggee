@@ -51,7 +51,7 @@ export default class HomeScreen extends Component {
                         <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
                         <Text style={homeScreen.iconText}>Shopping List and Pantry</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Profile')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Profile</Text>
                     </TouchableOpacity>

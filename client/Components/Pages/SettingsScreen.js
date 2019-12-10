@@ -49,7 +49,7 @@ const settingsScreen = StyleSheet.create({
   },
   list: {
     fontSize: 20,
-    marginLeft: 10
+    margin: 20
   },
   // settingsContainer: {
   //   flex: 1

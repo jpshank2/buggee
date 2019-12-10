@@ -27,6 +27,7 @@ export default class SearchResultScreen extends Component {
       let q = JSON.stringify(this.props.navigation.getParam("q", "null"));
       let fixedQ = q.substring(1, q.length - 1);
       fetch(
+        // `https://api.edamam.com/search?q=chicken&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`
         `https://api.edamam.com/search?q=${fixedQ}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c`
       )
         .then(res => {
@@ -89,6 +90,7 @@ export default class SearchResultScreen extends Component {
         `https://api.edamam.com/search?q=${fixedQ}&app_id=239382c6&app_key=8a0a2492a859731d69025557799ecb0c&health=${fixedHealth}`
       )
         .then(res => {
+          console.log(res.json())
           return res.json();
         })
         .then(data => {
@@ -134,7 +136,7 @@ export default class SearchResultScreen extends Component {
                     />
                     <View
                       style={{
-                        flexDirection: "row",
+                          flexDirection: "row",
                         justifyContent: "center"
                       }}
                     >
@@ -142,27 +144,32 @@ export default class SearchResultScreen extends Component {
                         style={{
                           flexDirection: "column",
                           opacity: 1,
+                          flexWrap: "wrap",
                         }}
                       >
                         <Text
                           style={{
                             textAlign: "center",
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: "500",
                             color: "#000",
-                            display: "flex",
+                            paddingLeft: 5,
                             flexWrap: "wrap",
-                            paddingLeft: 5
                           }}
                         >
                           {recipe.recipe.label}
                         </Text>
+                          <View style={{ 
+                            flexDirection: "row", 
+                            justifyContent: "space-evenly" 
+                            }}>
                         <TouchableOpacity
                           onPress={() => {
                             this.props.navigation.navigate("Recipe", {
                               r: id
-                            });
-                          }}
+                            })
+                          }
+                          }
                         >
                           <Text
                             style={{
@@ -176,9 +183,8 @@ export default class SearchResultScreen extends Component {
                             Details
                           </Text>
                         </TouchableOpacity>
-                      </View>
-                      <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-                        <Heart />
+                          <Heart />
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -197,10 +203,12 @@ const searchResultScreen = StyleSheet.create({
     backgroundColor: "#fff",
     alignContent: "center",
     justifyContent: "center",
+    marginLeft: 8,
+    marginRight: 8,
     display: "flex",
     flexWrap: "wrap",
-    maxWidth: "100%",
-    minWidth: "90%",
+    minWidth: "85%",
+    maxWidth: "90%",
     borderBottomColor: 'red',
     borderBottomWidth: 2,
   },
@@ -215,8 +223,8 @@ const searchResultScreen = StyleSheet.create({
     maxWidth: 300,
     maxHeight: 300,
     alignSelf: "center",
-    margin: 5,
-    padding: 5,
+    // margin: 5,
+    // padding: 5,
     borderRadius: 15,
     opacity: 1,
     shadowOffset: { width: 2, height: 2 },
@@ -231,7 +239,7 @@ const searchResultScreen = StyleSheet.create({
     backgroundColor: "#ddd",
     borderRadius: 15,
     padding: 2,
-    marginBottom: 20,
+    marginBottom: 10,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "gray",
     shadowRadius: 1,

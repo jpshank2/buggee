@@ -24,7 +24,7 @@ export default class Heart extends Component {
                     name={this.state.fill ? `ios-heart` : `ios-heart-empty`} 
                     color={this.state.fill ? `red` : `#fff`}
                     size={36} 
-                    style={{ justifyContent: "center", marginLeft: 40 }} />
+                    style={{ justifyContent: "center", marginLeft: 25 }} />
                 </TouchableOpacity>
             </View>
         )

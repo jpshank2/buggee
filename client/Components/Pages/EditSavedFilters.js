@@ -116,7 +116,7 @@ export default class EditFiltersScreen extends Component {
             marginBottom: 10
           }}
         >
-          Current Saved Filters: "Display Saved Filters Here"
+          Current Saved Filters: n/a
         </Text>
         <TouchableOpacity
           onPress={() => {
