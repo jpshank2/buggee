@@ -29,7 +29,8 @@ export default class ListScreen extends Component {
         "Chicken",
         "Potatoes",
         "Frozen Peas"
-      ]
+      ],
+      addedList: []
     }
   }
 
@@ -70,7 +71,7 @@ export default class ListScreen extends Component {
     if (this.props.navigation.getParam("ingredients", "null") != "null") {
       console.log(this.props.navigation.getParam("ingredients"))
       this.setState({ shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")] })
-    }
+    } 
   }
 
   // componentDidUpdate(prevProps) {
@@ -86,7 +87,7 @@ export default class ListScreen extends Component {
         <ImageBackground source={require('../images/whitePlate.jpg')} style={listScreen.headerImage}>
           <View style={{
             alignContent: 'center', borderBottomWidth: 2,
-            borderColor: 'white', height: 55
+            borderColor: 'white', height: 55, marginTop: 15
           }}>
             <Text style={listScreen.instructions}>Tap a Shopping List Item to Add it to Your Pantry and Remove it from Your Shopping List!</Text>
             <Text style={listScreen.instructions}>Press and Hold Any Item to Just Remove it!</Text>
@@ -168,7 +169,8 @@ const listScreen = StyleSheet.create({
   instructions: {
     color: 'white',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: "center",
   },
 
   list: {
