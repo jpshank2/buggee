@@ -34,9 +34,10 @@ export default class GroceryList extends Component {
         return (
             <View>
                 <Text style={{color:'white', fontSize: 22}}>Add Item:</Text>
-                <TextInput style={{color:'white', borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18}}
+                <TextInput style={{width: 200, marginBottom: 8, paddingLeft: 5, color:'white', borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18}}
                     ref={input => {this.textInput = input}}
                     placeholder="New Item"
+                    placeholderTextColor="white" 
                     onChangeText={newItem => this.setState({ newItem })}
                     onSubmitEditing={() => {
                         this.props.addPantry(this.state.newItem)
@@ -50,7 +51,7 @@ export default class GroceryList extends Component {
                                     this.props.removePantry(items)
                                     alert(`You removed ${items} from your pantry list!`)
                                 }}>
-                            <Text style={{color: 'white', fontSize: 16}}>{items}</Text>
+                            <Text style={{color: 'white', fontSize: 16, padding: 5, flexWrap: "wrap"}}>{items}</Text>
                             </TouchableOpacity>
                         </View>
                     )

@@ -87,7 +87,7 @@ export default class ListScreen extends Component {
           </View>
 
           <View style={listScreen.listContainerBackground} >
-            <Text style={listScreen.title}> Shopping </Text>
+            <Text style={listScreen.title}> Shopping List </Text>
             <ScrollView >
               {/* <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Shopping",
@@ -112,7 +112,7 @@ export default class ListScreen extends Component {
           </View>
 
           <View style={listScreen.listContainerBackground}>
-            <Text style={listScreen.title}> Pantry </Text>
+            <Text style={listScreen.title}> Pantry List </Text>
             <ScrollView >
               {/* <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Pantry", {
@@ -175,15 +175,15 @@ const listScreen = StyleSheet.create({
 
   listContainerBackground: {
     flex: 1,
-    backgroundColor: 'rgba(255, 0, 0, 0.6)',
+    backgroundColor: 'rgba(255, 0, 0, 0.8)',
     justifyContent: 'center',
-    alignContent: 'center',
+    alignSelf: 'center',
     alignItems: 'center',
     marginTop: 5,
     marginLeft: 100,
     marginRight: 100,
     borderRadius: 30,
-    width: 200,
+    width: "75%",
   },
 
   listContainer: {

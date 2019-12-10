@@ -32,9 +32,10 @@ export default class ShoppingList extends Component {
         return (
             <View>
                 <Text style={{color:'white', fontSize: 22}}>Add Item:</Text>
-                <TextInput style={{color:'white', borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18}}
+                <TextInput style={{width: 200, paddingLeft: 8, color:'white', marginBottom: 5, borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18}}
                     ref={input => { this.textInput = input }}
                     placeholder="New Item"
+                    placeholderTextColor="white"
                     onChangeText={newItem => this.setState({ newItem })}
                     onSubmitEditing={() => {
                         this.props.addShopping(this.state.newItem)
@@ -51,7 +52,7 @@ export default class ShoppingList extends Component {
                                     this.props.removeShopping(items)
                                     alert(`You removed ${items} from your shopping list!`)
                                 }}>
-                                <Text style={{color: 'white', fontSize: 16}}>{items}</Text>
+                                <Text style={{color: 'white', fontSize: 16, padding: 5, flexWrap: "wrap"}}>{items}</Text>
                             </TouchableOpacity>
                         </View>
                     )

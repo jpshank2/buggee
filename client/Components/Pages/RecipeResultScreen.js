@@ -9,6 +9,7 @@ import {
   Linking
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { NavigationActions } from "react-navigation";
 
 export default class RecipeResultScreen extends Component {
   constructor(props) {
@@ -86,7 +87,7 @@ export default class RecipeResultScreen extends Component {
                     onPress={() => {
                         this.props.navigation.navigate("Lists", {
                             ingredients: this.state.ingredient
-                        })
+                        }, NavigationActions.navigate({routeName: "Main"}))
                     }}>
                     <FontAwesome name={"plus-circle"} size={25} />
                     <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>

@@ -208,7 +208,6 @@ const searchResultScreen = StyleSheet.create({
     display: "flex",
     flexWrap: "wrap",
     minWidth: "85%",
-    maxWidth: "90%",
     borderBottomColor: 'red',
     borderBottomWidth: 2,
   },
@@ -234,7 +233,9 @@ const searchResultScreen = StyleSheet.create({
   },
 
   recipe: {
-    justifyContent: "center",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignSelf: "center",
     alignContent: "center",
     backgroundColor: "#ddd",
     borderRadius: 15,
