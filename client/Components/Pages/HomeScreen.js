@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, TextInput } from 'react-native'
 import { SearchBar, Icon } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
 
 
 export default class HomeScreen extends Component {
@@ -51,7 +52,7 @@ export default class HomeScreen extends Component {
                         <Image style={homeScreen.eachIcon} source={require('../images/shoppinglist2.png')}></Image>
                         <Text style={homeScreen.iconText}>Shopping List and Pantry</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Profile')}}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.navigate('Settings', {}, NavigationActions.navigate({routeName: "Profile"}))}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/catProfile.jpg')}></Image>
                         <Text style={homeScreen.iconText}>Profile</Text>
                     </TouchableOpacity>

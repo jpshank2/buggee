@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import GroceryList from "../Fragments/PantryList";
 import ShoppingList from "../Fragments/ShoppingList";
+import { NavigationEvents } from 'react-navigation';
 
 export default class ListScreen extends Component {
   constructor(props) {
@@ -67,23 +68,15 @@ export default class ListScreen extends Component {
     this.setState({ pantryList: newPantry })
   }
 
-  componentDidMount() {
-    if (this.props.navigation.getParam("ingredients", "null") != "null") {
-      console.log(this.props.navigation.getParam("ingredients"))
-      this.setState({ shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")] })
-    } 
-  }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.navigation.getParam("ingredients", "null") !== prevProps.addedList) {
-  //     console.log(this.props.navigation.getParam("ingredients"))
-  //     this.setState({ shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")] })
-  //   }
-  // }
-
   render() {
     return (
       <View style={listScreen.container}>
+        <NavigationEvents 
+          onDidFocus={payload => {
+            if (this.props.navigation.getParam("ingredients", "null") != "null") {
+              this.setState({ shoppingList: [...this.state.shoppingList, ...this.props.navigation.getParam("ingredients", "null")] })
+            } 
+          }} />
         <ImageBackground source={require('../images/whitePlate.jpg')} style={listScreen.headerImage}>
           <View style={{
             alignContent: 'center', borderBottomWidth: 2,
