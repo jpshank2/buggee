@@ -82,13 +82,13 @@ export default class SearchScreen extends Component {
             />
           </View>
 
-          <FilterMenu style={{backgroundColor:'white'}}
+          <FilterMenu
             selectDiet={this.selectDiet}
             diet={this.state.diet}
             addHealth={this.addHealth}
             health={this.state.health}
           />
-          <TouchableOpacity>
+          <TouchableOpacity style>
             <Text
               style={{
                 display: this.state.diet == "no" ? "none" : "flex",

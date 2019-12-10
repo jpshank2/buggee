@@ -75,7 +75,7 @@ const settingsScreen = StyleSheet.create({
   list: {
     fontSize: 24,
     marginLeft: 10,
-    marginTop: 6
   },
  
+  
 });
