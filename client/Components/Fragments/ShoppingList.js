@@ -53,7 +53,7 @@ export default class ShoppingList extends Component {
                                     this.props.removeShopping(items)
                                     alert(`You removed ${items} from your shopping list!`)
                                 }}>
-                                <Text style={{color: 'white', fontSize: 19,}}>
+                                <Text style={{color: 'white', fontSize: 19, maxWidth: "90%"}}>
                                    <Ionicons name='ios-trash'size={20}/>
                                 {items}
                                  <Ionicons name='ios-checkmark' size={40}/>
