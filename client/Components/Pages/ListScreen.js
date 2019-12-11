@@ -175,7 +175,7 @@ const listScreen = StyleSheet.create({
 
   listContainerBackground: {
     flex: 1,
-    backgroundColor: 'rgba(255, 0, 0, 0.8)',
+    backgroundColor: 'rgba(255, 0, 0, 0.7)',
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',

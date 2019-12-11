@@ -89,7 +89,7 @@ export default class RecipeResultScreen extends Component {
                             ingredients: this.state.ingredient
                         }, NavigationActions.navigate({routeName: "Main"}))
                     }}>
-                    <FontAwesome name={"plus-circle"} size={25} />
+                    <FontAwesome name={"plus-circle"} size={20} />
                     <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
                 </TouchableOpacity>
                 {this.state.information}

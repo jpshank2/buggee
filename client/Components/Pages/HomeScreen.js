@@ -37,8 +37,6 @@ export default class HomeScreen extends Component {
                     </View>
                 </View>
 
-
-
                 <View style={homeScreen.iconContainer}>
                     <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>
                         <Image style={homeScreen.eachIcon} source={require('../images/cookBook.jpeg')}/>

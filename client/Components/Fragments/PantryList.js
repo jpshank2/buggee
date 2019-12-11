@@ -7,6 +7,7 @@ import {
     ScrollView,
     TouchableOpacity
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons.js";
 
 export default class GroceryList extends Component {
     constructor(props) {
@@ -51,7 +52,10 @@ export default class GroceryList extends Component {
                                     this.props.removePantry(items)
                                     alert(`You removed ${items} from your pantry list!`)
                                 }}>
-                            <Text style={{color: 'white', fontSize: 16, padding: 5, flexWrap: "wrap"}}>{items}</Text>
+                                <Text style={{ color: 'white', fontSize: 19 }}>
+                                    <Ionicons name='ios-trash' size={20} />
+                                    {items}
+                                </Text>
                             </TouchableOpacity>
                         </View>
                     )
