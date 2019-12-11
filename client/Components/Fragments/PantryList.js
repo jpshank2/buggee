@@ -47,16 +47,19 @@ export default class GroceryList extends Component {
                 {this.props.pantryList.map((items, index) => {
                     return (
                         <View key={index}>
-                            <TouchableOpacity
-                                onLongPress={() => {
-                                    this.props.removePantry(items)
-                                    alert(`You removed ${items} from your pantry list!`)
-                                }}>
-                                <Text style={{ color: 'white', fontSize: 19 }}>
-                                    <Ionicons name='ios-trash' size={20} />
+                            <View style={{ flexDirection: "row", flexWrap: "wrap", maxWidth: "90%", alignItems: "center", margin: 5 }} >
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.props.removePantry(items)
+                                        alert(`You removed ${items} from your Pantry List!`)
+                                    }}
+                                >
+                                    <Ionicons name='ios-trash' size={30} style={{ marginRight: 15, color: "white" }} />
+                                </TouchableOpacity>
+                                <Text style={{ color: 'white', fontSize: 19, flexWrap: "wrap" }}>
                                     {items}
                                 </Text>
-                            </TouchableOpacity>
+                            </View>
                         </View>
                     )
                 })}

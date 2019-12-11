@@ -12,8 +12,6 @@ const SettingsNavigator = createStackNavigator(
         Profile: MyProfileScreen,
         Filters: EditFiltersScreen,
         Yes: SettingsScreen,
-        Shopping: ShoppingListScreen,
-        Pantry: PantryListScreen
     },
     {
         initialRouteName: "Yes"

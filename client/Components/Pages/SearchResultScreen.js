@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { View, Text, ScrollView, Image, StyleSheet } from "react-native";
+import { View, Text, ScrollView, Image, StyleSheet, ImageBackground } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Heart from "../Fragments/Heart";
 
@@ -106,6 +106,7 @@ export default class SearchResultScreen extends Component {
   render() {
     return (
       <View style={searchResultScreen.container}>
+        <ImageBackground source={require('../images/whitePlate.jpg')} style={searchResultScreen.headerImage}>
         <ScrollView>
           <Text style={searchResultScreen.showingText}>
             Showing results for:{" "}
@@ -192,6 +193,7 @@ export default class SearchResultScreen extends Component {
               })
             )}
         </ScrollView>
+        </ImageBackground>
       </View>
     );
   }
@@ -199,12 +201,11 @@ export default class SearchResultScreen extends Component {
 
 const searchResultScreen = StyleSheet.create({
   container: {
+    width: "100%",
     flex: 1,
     backgroundColor: "#fff",
     alignContent: "center",
     justifyContent: "center",
-    marginLeft: 8,
-    marginRight: 8,
     display: "flex",
     flexWrap: "wrap",
     minWidth: "85%",
@@ -214,7 +215,9 @@ const searchResultScreen = StyleSheet.create({
   showingText: {
     margin: 10,
     fontSize: 14,
-    opacity: 0.7
+    opacity: 0.7,
+    color: "white",
+    textAlign: "center"
   },
   image: {
     width: 300,
@@ -252,5 +255,15 @@ const searchResultScreen = StyleSheet.create({
 
   loading: {
     fontSize: 25
-  }
+  },
+  headerImage: {
+    width: '100%',
+    display: 'flex',
+    // textAlign: 'center',
+    flex: 1.5,
+    //borderBottomWidth: 3,
+    borderBottomColor: 'red',
+    //alignItems: "center",
+    //justifyContent: "center"
+  },
 });

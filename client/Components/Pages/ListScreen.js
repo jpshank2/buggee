@@ -78,13 +78,13 @@ export default class ListScreen extends Component {
             } 
           }} />
         <ImageBackground source={require('../images/whitePlate.jpg')} style={listScreen.headerImage}>
-          <View style={{
+          {/* <View style={{
             alignContent: 'center', borderBottomWidth: 2,
             borderColor: 'white', height: 55, marginTop: 15
           }}>
-            <Text style={listScreen.instructions}>Tap a Shopping List Item to Add it to Your Pantry and Remove it from Your Shopping List!</Text>
-            <Text style={listScreen.instructions}>Press and Hold Any Item to Just Remove it!</Text>
-          </View>
+            <Text style={listScreen.instructions}>Click the Check Mark to Add an Item to Your Pantry and Remove it from Your Shopping List!</Text>
+            <Text style={listScreen.instructions}>Click the Trash Can to Remove an Item!</Text>
+          </View> */}
 
           <View style={listScreen.listContainerBackground} >
             <Text style={listScreen.title}> Shopping List </Text>
@@ -179,7 +179,7 @@ const listScreen = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 16,
     marginLeft: 100,
     marginRight: 100,
     borderRadius: 30,

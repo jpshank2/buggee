@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  Linking
+  Linking,
+  ImageBackground
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { NavigationActions } from "react-navigation";
@@ -69,7 +70,7 @@ export default class RecipeResultScreen extends Component {
                     Linking.openURL(info.url);
                   }}
                 >
-                  <Text selectable>View Source</Text>
+                  <Text style={{textAlign: "center"}} selectable>View Source</Text>
                 </TouchableOpacity>
               </View>
               {ingredients}
@@ -80,22 +81,25 @@ export default class RecipeResultScreen extends Component {
       });
   }
 
-    render() {
-        return (
-            <View style={recipeResultScreen.container}>
-                <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigation.navigate("Lists", {
-                            ingredients: this.state.ingredient
-                        }, NavigationActions.navigate({routeName: "Main"}))
-                    }}>
-                    <FontAwesome name={"plus-circle"} size={20} />
-                    <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
-                </TouchableOpacity>
-                {this.state.information}
-            </View>
-        );
-    }
+  render() {
+    return (
+      <View style={recipeResultScreen.container}>
+        <ImageBackground source={require('../images/whitePlate.jpg')} style={recipeResultScreen.headerImage}>
+          <TouchableOpacity
+            style={recipeResultScreen.add}
+            onPress={() => {
+              this.props.navigation.navigate("Lists", {
+                ingredients: this.state.ingredient
+              }, NavigationActions.navigate({ routeName: "Main" }))
+            }}>
+            <FontAwesome name={"plus-circle"} size={20} />
+            <Text style={recipeResultScreen.addText}>Add Ingredients to Shopping List!</Text>
+          </TouchableOpacity>
+          {this.state.information}
+        </ImageBackground>
+      </View>
+    );
+  }
 }
 
 const recipeResultScreen = StyleSheet.create({
@@ -109,17 +113,21 @@ const recipeResultScreen = StyleSheet.create({
     height: 300,
     width: 300,
     alignSelf: "center",
+    borderColor: "white",
+    borderWidth: 3,
     borderRadius: 10
   },
 
   title: {
     fontSize: 30,
     fontWeight: "400",
-    textAlign: "center"
+    textAlign: "center",
+    color: "white"
   },
 
   source: {
-    textAlign: "center"
+    textAlign: "center",
+    color: "white"
   },
 
   url: {
@@ -127,22 +135,38 @@ const recipeResultScreen = StyleSheet.create({
     backgroundColor: "#ddd",
     borderRadius: 15,
     padding: 15,
-    width: 110,
+    width: 150,
     marginLeft: 120
   },
 
   ingredient: {
     marginLeft: 8,
+    fontSize: 20,
+    color: "white"
+  },
+
+  addText: {
     fontSize: 20
   },
-
-  add: {
-    flexDirection: "row",
-    margin: 10,
-    justifyContent: "space-evenly"
+  headerImage: {
+    width: '100%',
+    display: 'flex',
+    // textAlign: 'center',
+    flex: 1.5,
+    //borderBottomWidth: 3,
+    borderBottomColor: 'red',
+    //alignItems: "center",
+    //justifyContent: "center"
   },
-
-    addText: {
-        fontSize: 20
-    }
+  add: {
+    fontSize: 20,
+    backgroundColor: "#ddd",
+    borderRadius: 15,
+    padding: 15,
+    width: "90%",
+    flexDirection: "row", 
+    justifyContent: "space-evenly",
+    alignSelf: "center",
+    margin: 15
+  }
 })
