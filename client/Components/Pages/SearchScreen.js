@@ -44,7 +44,7 @@ export default class SearchScreen extends Component {
     if (this.state.health.length === 0) {
       this.setState({ health: [e] });
     } else {
-      this.setState({ health: [...this.state.health, e] });
+      this.setState({ health: [...this.state.health, e] }); //spread operator 
     }
   };
 

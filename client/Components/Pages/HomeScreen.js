@@ -17,7 +17,7 @@ export default class HomeScreen extends Component {
 
     render() {
 
-        console.log("some bullshit for github")
+        
         return (
             <View style={homeScreen.container}>
 
@@ -37,8 +37,6 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
                 </View>
-
-
 
                 <View style={homeScreen.iconContainer}>
                     <TouchableOpacity onPress={() => {this.props.navigation.navigate('Cookbook')}}>

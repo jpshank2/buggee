@@ -7,6 +7,7 @@ import {
     ScrollView,
     TouchableOpacity
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons.js";
 
 export default class GroceryList extends Component {
     constructor(props) {
@@ -19,9 +20,9 @@ export default class GroceryList extends Component {
     render() {
         return (
             <View>
-                <Text style={{color:'white', fontSize: 22}}>Add Item:</Text>
-                <TextInput style={{color:'white', borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18}}
-                    ref={input => {this.textInput = input}}
+                <Text style={{ color: 'white', fontSize: 22 }}>Add Item:</Text>
+                <TextInput style={{ color: 'white', borderColor: 'white', borderWidth: .5, borderRadius: 20, fontSize: 18 }}
+                    ref={input => { this.textInput = input }}
                     placeholder="New Item"
                     onChangeText={newItem => this.setState({ newItem })}
                     onSubmitEditing={() => {
@@ -36,7 +37,10 @@ export default class GroceryList extends Component {
                                     this.props.removePantry(items)
                                     alert(`You removed ${items} from your pantry list!`)
                                 }}>
-                            <Text style={{color: 'white', fontSize: 16}}>{items}</Text>
+                                <Text style={{ color: 'white', fontSize: 19 }}>
+                                    <Ionicons name='ios-trash' size={20} />
+                                    {items}
+                                </Text>
                             </TouchableOpacity>
                         </View>
                     )

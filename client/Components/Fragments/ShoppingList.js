@@ -7,6 +7,7 @@ import {
     ScrollView,
     TouchableOpacity
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons.js";
 
 export default class ShoppingList extends Component {
     constructor(props) {
@@ -39,7 +40,11 @@ export default class ShoppingList extends Component {
                                     this.props.removeShopping(items)
                                     alert(`You removed ${items} from your shopping list!`)
                                 }}>
-                                <Text style={{color: 'white', fontSize: 16}}>{items}</Text>
+                                <Text style={{color: 'white', fontSize: 19,}}>
+                                   <Ionicons name='ios-trash'size={20}/>
+                                {items}
+                                 <Ionicons name='ios-checkmark' size={40}/>
+                                </Text>
                             </TouchableOpacity>
                         </View>
                     )
