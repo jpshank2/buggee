@@ -54,9 +54,9 @@ export default class ShoppingList extends Component {
                                     alert(`You removed ${items} from your shopping list!`)
                                 }}>
                                 <Text style={{color: 'white', fontSize: 19, maxWidth: "90%"}}>
-                                   <Ionicons name='ios-trash'size={20}/>
+                                   <Ionicons name='ios-trash'size={20} style={{marginRight: 5}} />
                                 {items}
-                                 <Ionicons name='ios-checkmark' size={40}/>
+                                 <Ionicons name='ios-checkmark' size={40} style={{marginLeft: 5}} />
                                 </Text>
                             </TouchableOpacity>
                         </View>
