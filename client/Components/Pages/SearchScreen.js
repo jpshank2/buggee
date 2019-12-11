@@ -135,6 +135,7 @@ export default class SearchScreen extends Component {
               <Text style={{ margin: 2, paddingLeft: 3,}}>Clear Filters</Text>
             </TouchableOpacity>
           </View>
+          <Image style={{marginBottom: 15}} source={require("../images/white.png")} />
         </ImageBackground>
       </Fragment>
     );
