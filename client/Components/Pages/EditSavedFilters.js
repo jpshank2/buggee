@@ -18,22 +18,6 @@ export default class EditFiltersScreen extends Component {
   constructor(props) {
     super(props);
 
-    handleText = e => {
-      this.setState({ text: e.target.value });
-    };
-
-    selectDiet = e => {
-      this.setState({ diet: e });
-    };
-
-    addHealth = e => {
-      if (this.state.health.length === 0) {
-        this.setState({ health: [e] });
-      } else {
-        this.setState({ health: [...this.state.health, e] });
-      }
-    };
-
     this.state = {
       filters: " ",
       editIsClicked: false,
@@ -45,6 +29,22 @@ export default class EditFiltersScreen extends Component {
 
   static navigationOptions = {
     title: "Filters"
+  };
+  
+  handleText = e => {
+    this.setState({ text: e.target.value });
+  };
+
+  selectDiet = e => {
+    this.setState({ diet: e });
+  };
+
+  addHealth = e => {
+    if (this.state.health.length === 0) {
+      this.setState({ health: [e] });
+    } else {
+      this.setState({ health: [...this.state.health, e] });
+    }
   };
 
   render() {
